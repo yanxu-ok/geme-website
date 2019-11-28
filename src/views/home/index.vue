@@ -3,8 +3,6 @@
     home
     {{msg}}
     <drag-process :min="0" :max="100" v-model="proces" />
-    asdas
-    123
   </div>
 </template>
 <script>
