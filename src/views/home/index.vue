@@ -3,6 +3,8 @@
     home
     {{msg}}
     <drag-process :min="0" :max="100" v-model="proces" />
+
+    123
   </div>
 </template>
 <script>
