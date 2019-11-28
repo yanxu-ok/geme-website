@@ -1,8 +1,6 @@
 <template>
   <div>
     圈子首页
-    {{msg}}
-    
   </div>
 </template>
 <script>
