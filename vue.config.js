@@ -5,6 +5,10 @@ function resolve(dir) {
 }
 
 module.exports = {
+  devServer: {
+    open:true,
+    hot:true
+  },
   publicPath: './',
   productionSourceMap: false,
   lintOnSave: false,
