@@ -26,7 +26,7 @@
 </template>
 <script>
 export default {
-  name: "shop",
+  name: "hotShop",
   data() {
     return {
       shopList: [
@@ -57,38 +57,6 @@ export default {
         },
         {
           id: 4,
-          title: "小米手机商品管理设置了",
-          price: 100,
-          stock: 931,
-          popularity: 4934,
-          already: 14
-        },
-        {
-          id: 5,
-          title: "小米手机商品管理设置了",
-          price: 100,
-          stock: 931,
-          popularity: 4934,
-          already: 14
-        },
-        {
-          id: 6,
-          title: "小米手机商品管理设置了",
-          price: 100,
-          stock: 931,
-          popularity: 4934,
-          already: 14
-        },
-        {
-          id: 7,
-          title: "小米手机商品管理设置了",
-          price: 100,
-          stock: 931,
-          popularity: 4934,
-          already: 14
-        },
-        {
-          id: 8,
           title: "小米手机商品管理设置了",
           price: 100,
           stock: 931,

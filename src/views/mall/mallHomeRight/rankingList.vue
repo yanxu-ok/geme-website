@@ -46,7 +46,7 @@ export default {
   margin-top: 10px;
   border: 1px solid rgba(0, 145, 255, 0.3);
   .shui {
-    margin-top: 40px;
+    margin-top: 18px;
   }
   .ranking_header {
     display: flex;
@@ -108,7 +108,6 @@ export default {
   }
   div:nth-child(3) {
     flex: 2;
-    align-self: flex-start;
     color: rgba(0, 145, 255, 1);
     font-size: 12px;
     line-height: 150%;

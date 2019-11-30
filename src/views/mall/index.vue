@@ -33,23 +33,33 @@
         <lately></lately>
         <!-- 排行榜 -->
         <rankingList></rankingList>
-      </div> 
+      </div>
     </div>
-    <img src="@/assets/mall/1378.jpg">
+    <img src="@/assets/mall/1378.jpg" />
+    <!-- 中间下区域 -->
     <div class="mall_home_up">
-      <div class="mall_home_up_left"></div>
-      <div class="mall_home_up_right"></div>
+      <div class="mall_home_up_left">
+        <!-- 热销商品 -->
+        <div>
+          <hotShop></hotShop>
+        </div>
+        <div>
+          <phone></phone>
+        </div>
+      </div>
+      <div class="mall_home_up_right"></div>   
     </div>
-    
   </div>
 </template>
 <script>
-import right from "./mallHomeRight/right"
-import shopNotice from "./mallHomeRight/shopNotice"
-import lately from './mallHomeRight/lately'
-import rankingList from './mallHomeRight/rankingList'
-import lunBoTu from './mallHomeLeft/lunBoTu'
-import shop from './mallHomeLeft/shop'
+import right from "./mallHomeRight/right";
+import shopNotice from "./mallHomeRight/shopNotice";
+import lately from "./mallHomeRight/lately";
+import rankingList from "./mallHomeRight/rankingList";
+import lunBoTu from "./mallHomeLeft/lunBoTu";
+import shop from "./mallHomeLeft/shop";
+import hotShop from "./mallHomeUp/hotShop";
+import phone from "./mallHomeUp/phone";
 export default {
   components: {
     right,
@@ -57,7 +67,9 @@ export default {
     lately,
     rankingList,
     lunBoTu,
-    shop
+    shop,
+    hotShop,
+    phone
   },
   name: "mall",
   data() {
@@ -77,7 +89,7 @@ export default {
         }
       ],
       value: "全部商品分类导航"
-    }
+    };
   }
 };
 </script>
@@ -116,12 +128,22 @@ export default {
     }
   }
 }
-.mall{
-  img{
+.mall {
+  img {
     width: 100%;
+    margin-top: 10px;
   }
 }
-.mall_home_up{
-  
+.mall_home_up {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+  .mall_home_up_left {
+    flex: 5;
+  }
+  .mall_home_up_right {
+    margin-left: 20px;
+    flex: 2;
+  }
 }
 </style>
