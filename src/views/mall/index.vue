@@ -14,50 +14,65 @@
       </div>
       <!-- 右侧 -->
       <div class="mall_home_right">
-        <!-- 销售 -->
-        <div class="right_top">
-          <!-- title -->
-          <div class="right_top_title">
-            <div>销售冠军</div>
-            <div>人气冠军</div>
-          </div>
-          <!-- 路由坑 -->
-          <div>
-            <!-- <router-view></router-view> -->
-            <right></right>
-          </div>
-        </div>
+        <!-- 销售冠军 -->
+        <xiaoShou></xiaoShou>
         <!-- 商城公告 -->
         <shopNotice></shopNotice>
         <!-- 最近兑换 -->
         <lately></lately>
         <!-- 排行榜 -->
         <rankingList></rankingList>
-      </div> 
+      </div>
     </div>
-    <img src="@/assets/mall/1378.jpg">
+    <img src="@/assets/mall/1378.jpg" />
+    <!-- 中间下区域 -->
     <div class="mall_home_up">
-      <div class="mall_home_up_left"></div>
-      <div class="mall_home_up_right"></div>
+      <div class="mall_home_up_left">
+        <!-- 热销商品 -->
+        <div>
+          <hotShop></hotShop>
+        </div>
+        <!-- 手机配件 -->
+        <div>
+          <phone></phone>
+        </div>
+      </div>
+      <!-- 虚拟商品 -->
+      <div class="mall_home_up_right">
+        <mallHomeUpRight></mallHomeUpRight>
+      </div>
     </div>
-    
+    <!-- 时尚数码 -->
+    <div class="mall_home_bottom">
+      <fashion></fashion>
+    </div>
   </div>
 </template>
 <script>
-import right from "./mallHomeRight/right"
-import shopNotice from "./mallHomeRight/shopNotice"
-import lately from './mallHomeRight/lately'
-import rankingList from './mallHomeRight/rankingList'
-import lunBoTu from './mallHomeLeft/lunBoTu'
-import shop from './mallHomeLeft/shop'
+import {
+  lunBoTu,
+  xiaoShou,
+  shopNotice,
+  lately,
+  rankingList,
+  shop,
+  hotShop,
+  phone,
+  mallHomeUpRight,
+  fashion
+} from "./index";
 export default {
   components: {
-    right,
+    xiaoShou,
     shopNotice,
     lately,
     rankingList,
     lunBoTu,
-    shop
+    shop,
+    hotShop,
+    phone,
+    mallHomeUpRight,
+    fashion
   },
   name: "mall",
   data() {
@@ -77,7 +92,7 @@ export default {
         }
       ],
       value: "全部商品分类导航"
-    }
+    };
   }
 };
 </script>
@@ -95,33 +110,24 @@ export default {
   .mall_home_right {
     flex: 2;
     margin-left: 20px;
-    .right_top {
-      border: 1px solid rgba(0, 145, 255, 0.3);
-      .right_top_title {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        div {
-          text-align: center;
-          width: 50%;
-          height: 30px;
-          line-height: 30px;
-          font-weight: bold;
-          font-size: 10px;
-        }
-        div:nth-child(2) {
-          background-color: rgba(229, 229, 229, 1);
-        }
-      }
-    }
   }
 }
-.mall{
-  img{
+.mall {
+  img {
     width: 100%;
+    margin-top: 10px;
   }
 }
-.mall_home_up{
-  
+.mall_home_up {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+  .mall_home_up_left {
+    flex: 5;
+  }
+  .mall_home_up_right {
+    margin-left: 20px;
+    flex: 2;
+  }
 }
 </style>
