@@ -2,7 +2,10 @@
   <div>
     <div class="shopp">
       <span class="smallheader">
-        <div></div>热销商品
+        <div class="xuhi">
+          <div class="small"></div>时尚数码
+        </div>
+        <div>更多>></div>
       </span>
       <!-- 商品菜单 -->
       <div class="shangPinRongQi">
@@ -26,7 +29,7 @@
 </template>
 <script>
 export default {
-  name: "hotShop",
+  name: "fashion",
   data() {
     return {
       shopList: [
@@ -62,6 +65,14 @@ export default {
           stock: 931,
           popularity: 4934,
           already: 14
+        },
+        {
+          id: 5,
+          title: "小米手机商品管理设置了",
+          price: 100,
+          stock: 931,
+          popularity: 4934,
+          already: 14
         }
       ]
     };
@@ -78,14 +89,25 @@ export default {
   .smallheader {
     margin-left: 30px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    div {
+    margin-top: 5px;
+    .small {
       width: 5px;
       height: 19px;
       background-color: rgba(255, 111, 35, 1);
       margin-right: 10px;
       font-size: 12px;
     }
+  }
+  .xuhi {
+    display: flex;
+  }
+  div:nth-child(2) {
+    font-size: 11px;
+    line-height: 150%;
+    text-align: left;
+    color: rgba(0, 145, 255, 1);
   }
   .shangPinRongQi {
     display: flex;
