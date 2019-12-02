@@ -60,7 +60,7 @@ import {
   phone,
   mallHomeUpRight,
   fashion
-} from "./index";
+} from "./data";
 export default {
   components: {
     xiaoShou,
