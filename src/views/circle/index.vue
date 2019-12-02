@@ -74,9 +74,18 @@
             </div>
              <el-button type="primary" size="small" class="comment-card-btn">关注</el-button>
           </div>
+          <div class="comment-card-right-bottom">
           <div class="comment-card-right">
             <label class="comment-title">{{comment.title}}</label>
             <textarea class="comment-card-comment" disabled="true" v-model="comment.comment"></textarea>
+          </div>
+          <div class="comment-card-buttom-room">
+          <div class="comment-card-buttom" v-for="(item,index) in comment.chatu" :key="index" >
+        
+            <img :src="item" class="comment-bottom" />
+   
+          </div>
+          </div>
           </div>
         </div>
       </div>
@@ -86,6 +95,28 @@
           <div class="uprightdown-title">
             <label class="left">热门圈子</label>
             <label class="right">更多圈子 > ></label>
+          </div>
+          <div class="buttom-right-top-buttom">
+            <div class="buttom-right-top-left">
+              <div class="paiming1">1</div>
+              <div class="paiming2">2</div>
+              <div class="paiming3">3</div>
+              <div class="paiming-ather">4</div>
+              <div class="paiming-ather">5</div>
+              <div class="paiming-ather">6</div>
+              <div class="paiming-ather">7</div>
+              <div class="paiming-ather">8</div>
+            </div>
+
+            <div class="buttom-right-top-right" >
+              <div class="xinxicard" v-for="(xinxi,index) in xinxi" :key="index">
+                <img :src="xinxi.rmtx" class="xinxiTX">
+                <div class="xinxicard-miaoshu">
+                  <label class="xinxicard-miaoshu-title">{{xinxi.title}}</label>
+                  <label>{{xinxi.miaoshu}}</label>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -115,6 +146,7 @@ import Carousel4 from "@/assets/circle/Carousel4.jpg";
 import Carousel5 from "@/assets/circle/Carousel5.jpg";
 import Advertisement from "@/assets/circle/center.jpg";
 import Userhead from "@/assets/circle/Userhead.jpg";
+import rmtx from "@/assets/circle/rmtx.jpg";
 export default {
   name: "circle-home",
   data() {
@@ -186,6 +218,12 @@ export default {
           integral:'500',
           title:"九条命的爱情",
           comment:"Pellentesque iaculis, augue eu bibendum posuere, erat orci vestibulum mi, id tempor augue enim ut sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris scelerisque orci sed sapien vulputate aliquam. Sed volutpat maximus libero eget porttitor. Ut a massa porta, dapibus justo sed, varius sapien. Cum socis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent neque arcu, aliquam ut eros sollicitudin, fermentum venenatis risus. Vestibulum eleifend ligula a odio tristique, et molestie lacus pretium. Etiam tempus ornare eros vel pharetra. Pellentesque in felis quam. In risus justo, congue ut quam vel, dictum dapibus tristique, et molestie lacus pretium. Etiam tempus ornare eros vel pharetra. Pellentesque in felis quam. In risus justo, congue ut quam vel, dictum nunc.Pellentesque iaculis, augue eu bibendum posuere, erat orci vestibulum mi, id tempor augue enim ut sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris scelerisque orci sed sapien vulputate aliquam. Sed volutpat maximus libero eget porttitor. Ut a massa porta, dapibus justo sed, varius sapien. Cum socis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent neque arcu, aliquam ut eros sollicitudin, fermentum venenatis risus. Vestibulum eleifend ligula a odio tristique, et molestie lacus pretium. Etiam tempus ornare eros vel pharetra. Pellentesque in felis quam. In risus justo, congue ut quam vel, dictum dapibus tristique, et molestie lacus pretium. Etiam tempus ornare eros vel pharetra. Pellentesque in felis quam. In risus justo, congue ut quam vel, dictum nunc.",
+          chatu:[
+            Carousel1,
+            Carousel2,
+            Carousel3,
+            Carousel4
+          ]
         },
          {
           id:'2',
@@ -196,7 +234,56 @@ export default {
           integral:'5000',
           title:"九爱情",
           comment:"Pellentesque iaculis, augue eu bibendum posuere, erat orci vestibulum mi, id tempor augue enim ut sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris scelerisque orci sed sapien vulputate aliquam. Sed volutpat maximus libero eget porttitor. Ut a massa porta, dapibus justo sed, varius sapien. Cum socis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent neque arcu, aliquam ut eros sollicitudin, fermentum venenatis risus. Vestibulum eleifend ligula a odio tristique, et molestie lacus pretium. Etiam tempus ornare eros vel pharetra. Pellentesque in felis quam. In risus justo, congue ut quam vel, dictum dapibus tristique, et molestie lacus pretium. Etiam tempus ornare eros vel pharetra. Pellentesque in felis quam. In risus justo, congue ut quam vel, dictum nunc.Pellentesque iaculis, augue eu bibendum posuere, erat orci vestibulum mi, id tempor augue enim ut sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris scelerisque orci sed sapien vulputate aliquam. Sed volutpat maximus libero eget porttitor. Ut a massa porta, dapibus justo sed, varius sapien. Cum socis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent neque arcu, aliquam ut eros sollicitudin, fermentum venenatis risus. Vestibulum eleifend ligula a odio tristique, et molestie lacus pretium. Etiam tempus ornare eros vel pharetra. Pellentesque in felis quam. In risus justo, congue ut quam vel, dictum dapibus tristique, et molestie lacus pretium. Etiam tempus ornare eros vel pharetra. Pellentesque in felis quam. In risus justo, congue ut quam vel, dictum nunc.",
+          chatu:[
+            Carousel1,
+            Carousel2,
+            Carousel3,
+            Carousel4
+          ]
         },
+      ],
+      xinxi:[
+        {
+          rmtx,
+          title:"哇哈哈",
+          miaoshu:"九条命的爱情半条命",
+        },
+        {
+          rmtx,
+          title:"哇哈哈",
+          miaoshu:"九条命的爱情半条命",
+        },
+         {
+          rmtx,
+          title:"哇哈哈",
+          miaoshu:"九条命的爱情半条命",
+        },
+         {
+          rmtx,
+          title:"哇哈哈",
+          miaoshu:"九条命的爱情半条命",
+        },
+         {
+          rmtx,
+          title:"哇哈哈",
+          miaoshu:"九条命的爱情半条命",
+        },
+        {
+          rmtx,
+          title:"哇哈哈",
+          miaoshu:"九条命的爱情半条命",
+        },
+        {
+          rmtx,
+          title:"哇哈哈",
+          miaoshu:"九条命的爱情半条命",
+        },
+        {
+          rmtx,
+          title:"哇哈哈",
+          miaoshu:"九条命的爱情半条命",
+        },
+        
       ],
       Advertisement,
       circlenumbaer: "18"
@@ -273,6 +360,10 @@ export default {
 .Userhead{
   width: 108px;
   height: 109px;
+}
+.comment-bottom{
+  width: 140px;
+  height: 100px;
 }
 
 
@@ -410,9 +501,10 @@ export default {
 }
 .comment-card{
   width: 100%;
-  height: 350px;
+  height: 400px;
   padding: 10px 10px 10px 10px;
   display: flex;
+  margin-bottom: 40px
 }
 .comment-card-left{
   width: 20%;
@@ -422,8 +514,8 @@ export default {
   align-items: center
 }
 .comment-card-right{
-  width: 80%;
-  height: 100%;
+  width: 100%;
+  height: 80%;
   display: flex;
   flex-direction: column;
 }
@@ -443,11 +535,118 @@ export default {
 }
 .comment-card-comment{
   width: 100%;
-  height: 100%;
+  height: 80%;
   background-color: #ffffff;
-
   resize:none; 
   border: 0px;
+}
+.comment-card-buttom{
+  width: 20%;
+}
+.comment-card-right-bottom{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+.comment-card-buttom-room{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+
+}
+.buttom-right-top-buttom{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: auto
+}
+.buttom-right-top-left{
+  width: 15%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.buttom-right-top-right{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  margin-top: 5px
+}
+
+
+
+
+.paiming1{
+  width: 34px;
+	height: 34px;
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(212, 48, 48, 1);
+	border-radius: 18px;
+	font-size: 24px;
+	line-height: 150%;
+	text-align: center; 
+  margin: auto 
+}
+.paiming2{
+  width: 34px;
+	height: 34px;
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(250, 126, 1, 1);
+	border-radius: 18px;
+	font-size: 24px;
+	line-height: 150%;
+	text-align: center; 
+  margin: auto 
+}
+.paiming3{
+  width: 34px;
+	height: 34px;
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(245, 227, 69, 1);
+	border-radius: 18px;
+	font-size: 24px;
+	line-height: 150%;
+	text-align: center; 
+  margin: auto 
+}
+.paiming-ather{
+  width: 34px;
+	height: 34px;
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(0, 145, 255, 1);
+	border-radius: 18px;
+	font-size: 24px;
+	line-height: 150%;
+	text-align: center; 
+  margin: auto 
+}
+.xinxicard{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px
+}
+.xinxiTX{
+  width: 49px;
+  height: 49px;
+}
+.xinxicard-miaoshu{
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}
+.xinxicard-miaoshu-title{
+  font-weight: bold
 }
 </style>
 
