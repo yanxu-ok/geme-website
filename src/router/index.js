@@ -3,74 +3,76 @@ import VueRouter from 'vue-router'
 import layout from '_v/layout'
 
 const _import_views = (path) => () => import(`_v/${path}`)
+const _import_views_three = (path, path1) => () => import(`_v/${path}/${path1}`)
 
 Vue.use(VueRouter)
 
-export const routes = [
-  {
-    path: '/',
-    component: layout,
-    redirect: '/home',
-    children: [
-      {
-        path: 'home',
-        name: 'home',
-        meta: {
-          title: '网站首页'
-        },
-        component: _import_views('home')
+export const routes = [{
+  path: '/',
+  component: layout,
+  redirect: '/home',
+  children: [{
+      path: 'home',
+      name: 'home',
+      meta: {
+        title: '网站首页'
       },
-      {
-        path: 'circle',
-        name: 'circle',
-        meta: {
-          title: '圈子首页'
-        },
-        component: _import_views('circle')
+      component: _import_views('home')
+    },
+    {
+      path: 'circle',
+      name: 'circle',
+      meta: {
+        title: '圈子首页'
       },
-      {
-        path: 'game-center',
-        name: 'game-center',
-        meta: {
-          title: '游戏中心'
-        },
-        component: _import_views('game-center')
+      component: _import_views('circle')
+    },
+    {
+      path: 'game-center',
+      name: 'game-center',
+      meta: {
+        title: '游戏中心'
       },
-      {
-        path: 'game-news',
-        name: 'game-news',
-        meta: {
-          title: '游戏资讯'
-        },
-        component: _import_views('game-news')
+      component: _import_views('game-center')
+    },
+    {
+      path: 'game-news',
+      name: 'game-news',
+      meta: {
+        title: '游戏资讯'
       },
-      {
-        path: 'game-skill',
-        name: 'game-skill',
-        meta: {
-          title: '游戏技巧'
-        },
-        component: _import_views('game-skill')
+      component: _import_views('game-news')
+    },
+    {
+      path: 'game-skill',
+      name: 'game-skill',
+      meta: {
+        title: '游戏技巧'
       },
-      {
-        path: 'comment',
-        name: 'comment',
-        meta: {
-          title: '网友点评'
-        },
-        component: _import_views('comment')
+      component: _import_views('game-skill')
+    },
+    {
+      path: 'comment',
+      name: 'comment',
+      meta: {
+        title: '网友点评'
       },
-      {
-        path: 'mall',
-        name: 'mall',
-        meta: {
-          title: '积分商城'
-        },
-        component: _import_views('mall')
-      }
-    ]
-  }
-]
+      component: _import_views('comment')
+    },
+    {
+      path: 'mall',
+      name: 'mall',
+      meta: {
+        title: '积分商城'
+      },
+      component: _import_views('mall'),
+      children: [{
+        path: 'threeRouter',
+        component: _import_views_three('mall', 'mallHomeRight/threeRouter')
+      }]
+    }
+  ]
+}]
 
 const router = new VueRouter({
   routes

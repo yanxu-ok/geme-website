@@ -6,7 +6,7 @@
         <div class="xuhi">
           <div class="small"></div>虚拟商品
         </div>
-        <div>更多>></div>
+        <!-- <div>更多>></div> -->
       </span>
       <!-- 列表 -->
       <div class="list" v-for="(item, index) in shopList" :key="index">
@@ -39,14 +39,6 @@ export default {
           stock: 4308,
           popularity: 1076,
           already: 38
-        },
-        {
-          id: 2,
-          title: "小米手机商品管理设置了",
-          price: 100,
-          stock: 931,
-          popularity: 4934,
-          already: 14
         }
       ]
     };
@@ -56,8 +48,10 @@ export default {
 </script>
 <style lang='less' scoped>
 .shopp {
-  border: 1px solid rgba(0, 145, 255, 0.3);
-  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: rgba(198, 198, 198, 0.5) 0px 0px 5px;
+  margin-top: 40px;
   .smallheader {
     margin-left: 30px;
     display: flex;

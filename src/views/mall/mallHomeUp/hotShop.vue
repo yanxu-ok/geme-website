@@ -71,7 +71,6 @@ export default {
 </script>
 <style lang='less' scoped>
 .shopp {
-  border: 1px solid rgba(0, 145, 255, 0.3);
   margin-top: 10px;
   padding-top: 10px;
   height: auto;
@@ -92,11 +91,11 @@ export default {
     justify-content: center;
     flex-wrap: wrap;
     .xiaoRongQi {
-      border: 1px solid rgba(0, 145, 255, 0.3);
       margin: 15px 15px;
       width: 170px;
       height: auto;
       padding: 5px;
+      background-color: rgba(229, 225, 225, 0.3);
       img {
         width: 100%;
         height: 150px;

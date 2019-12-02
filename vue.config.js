@@ -7,7 +7,8 @@ function resolve(dir) {
 module.exports = {
   devServer: {
     open:true,
-    hot:true
+    hot:true,
+    port:8080
   },
   publicPath: './',
   productionSourceMap: false,

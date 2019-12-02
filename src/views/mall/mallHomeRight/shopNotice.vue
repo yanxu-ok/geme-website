@@ -24,7 +24,8 @@ export default {
 <style lang='less' scoped>
 .shopNotice {
   margin-top: 10px;
-  border: 1px solid rgba(0, 145, 255, 0.3);
+  border-radius: 6px;
+  box-shadow:rgba(198, 198, 198, 0.5) 0px 0px 5px;
 }
 .shopTitle1 {
   margin-left: 30px;

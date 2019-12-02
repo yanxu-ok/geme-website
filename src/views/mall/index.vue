@@ -11,41 +11,45 @@
         <lunBoTu></lunBoTu>
         <!-- 商品列表-->
         <shop></shop>
+        <!-- 热销商品 -->
+        <hotShop></hotShop>
       </div>
       <!-- 右侧 -->
       <div class="mall_home_right">
         <!-- 销售冠军 -->
         <xiaoShou></xiaoShou>
         <!-- 商城公告 -->
-        <shopNotice></shopNotice>
+        <!-- <shopNotice></shopNotice> -->
         <!-- 最近兑换 -->
         <lately></lately>
         <!-- 排行榜 -->
-        <rankingList></rankingList>
-      </div>
-    </div>
-    <img src="@/assets/mall/1378.jpg" />
-    <!-- 中间下区域 -->
-    <div class="mall_home_up">
-      <div class="mall_home_up_left">
-        <!-- 热销商品 -->
-        <div>
-          <hotShop></hotShop>
-        </div>
-        <!-- 手机配件 -->
-        <div>
-          <phone></phone>
-        </div>
-      </div>
-      <!-- 虚拟商品 -->
-      <div class="mall_home_up_right">
+        <!-- <rankingList></rankingList> -->
+        <!-- 虚拟商品 -->
         <mallHomeUpRight></mallHomeUpRight>
       </div>
     </div>
+    <img src="@/assets/mall/2179.png" class="tupian" />
+    <!-- 中间下区域 -->
+    <!-- <div class="mall_home_up">
+      <div class="mall_home_up_left">
+        <! 热销商品 -->
+        <!-- <div>
+          <hotShop></hotShop>
+        </div>
+        手机配件
+        <div>
+          <phone></phone>
+        </div>
+      </div> --> 
+      <!-- 虚拟商品 -->
+      <!-- <div class="mall_home_up_right">
+        <mallHomeUpRight></mallHomeUpRight>
+      </div>
+    </div> -->
     <!-- 时尚数码 -->
-    <div class="mall_home_bottom">
+    <!-- <div class="mall_home_bottom">
       <fashion></fashion>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
@@ -60,7 +64,7 @@ import {
   phone,
   mallHomeUpRight,
   fashion
-} from "./index";
+} from "./data";
 export default {
   components: {
     xiaoShou,
@@ -129,5 +133,8 @@ export default {
     margin-left: 20px;
     flex: 2;
   }
+}
+.tupian{
+  height: 170px;
 }
 </style>
