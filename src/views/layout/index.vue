@@ -24,6 +24,7 @@ export default {
     margin: 0 auto;
     .container {
       min-height: calc(100vh - 175px - 135px);
+      padding: 20px;
     }
   }
 </style>
