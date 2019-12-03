@@ -10,9 +10,9 @@
   </div>
 </template>
 <script>
-import age1 from '../../../assets/mall/age1.jpg'
-import age2 from '../../../assets/mall/age2.jpg'
-import age3 from '../../../assets/mall/age3.jpg'
+import age1 from '@/assets/mall/age1.jpg'
+import age2 from '@/assets/mall/age2.jpg'
+import age3 from '@/assets/mall/age3.jpg'
 export default {
   name: "lunBoTu",
   data() {

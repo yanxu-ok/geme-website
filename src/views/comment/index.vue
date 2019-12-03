@@ -23,7 +23,7 @@
           <el-checkbox label="热门推荐">
             <img class="pic" :src="hotPic" alt />热门推荐
           </el-checkbox>
-          <el-checkbox label="免费游戏"></el-checkbox>
+          <el-checkbox label="免费游戏"><img class="pic" :src="hotPic1" alt />免费游戏</el-checkbox>
         </el-checkbox-group>
       </div>
     </div>
@@ -35,8 +35,9 @@
 </template>
 <script>
 import tagList from "_c/TagList";
-import hotPic from "@/assets/gameCenter/hot.png";
+import hotPic from "@/assets/gameCenter/77.png";
 import gameWrap from "_v/comment/gameWrap";
+import hotPic1 from '@/assets/gameCenter/99.png'
 export default {
   name: "comment",
   components: {
@@ -46,6 +47,7 @@ export default {
   data() {
     return {
       hotPic,
+      hotPic1,
       categorys: [
         {
           label: "游戏类型",
@@ -163,8 +165,8 @@ export default {
     .pic {
       display: inline-block;
       vertical-align: middle;
-      width: 30px;
-      height: 30px;
+      width: 24px;
+      height: 24px;
     }
   }
 }
