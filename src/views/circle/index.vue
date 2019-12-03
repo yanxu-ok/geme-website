@@ -3,11 +3,11 @@
     <div class="Overall">
       <div class="upleft">
         <div class="upleftup">
-          <label class="left">热门圈子</label>
-          <label class="right">更多圈子 > ></label>
+          <el-button type="primary" class="right-frist">热门圈子</el-button>
+          <label class="right" @click="morecircle">更多圈子 ></label>
         </div>
         <div class="upleftdown">
-          <div class="card-room" :key="index" v-for="(item,index) in card">
+          <div class="card-room" :key="index" v-for="(item,index) in card.slice(0,6)">
             <div class="card">
               <div class="card-up">
                 <div class="card-up-left">
@@ -26,10 +26,10 @@
                 </div>
               </div>
               <div class="card-down">
-                <label>简介：{{item.introduction}}</label>
+                <label class="jianjie">简介：{{item.introduction}}</label>
               </div>
             </div>
-            <el-button type="primary" class="btn-up">关注</el-button>
+            <el-button type="primary" size="mini" class="btn-up">关注</el-button>
           </div>
         </div>
       </div>
@@ -44,7 +44,7 @@
         <div class="uprightdown">
           <div class="uprightdown-title">
             <label class="left">热门动态</label>
-            <label class="right">更多动态 > ></label>
+            <label class="right">更多动态 ></label>
           </div>
           <div class="uprightdown-carousel">
             <el-carousel trigger="click" height="270px">
@@ -63,29 +63,27 @@
 
     <div class="buttom">
       <div class="buttom-left">
-        <div class="comment-card" :key="id" v-for="(comment,id) in comment">
+        <div class="comment-card" :key="id" v-for="(comment,id) in comment.slice(0,2)">
           <div class="comment-card-left">
-            <img :src="comment.Userhead" class="Userhead"/>
+            <img :src="comment.Userhead" class="Userhead" />
             <label class="comment-card-left-title">{{comment.username}}</label>
             <div class="comment-card-center">
-            <label>等级：{{comment.Grade}}</label>
-            <label>帖子：{{comment.Post}}</label>
-            <label>积分：{{comment.integral}}</label>
+              <label>等级：{{comment.Grade}}</label>
+              <label>帖子：{{comment.Post}}</label>
+              <label>积分：{{comment.integral}}</label>
             </div>
-             <el-button type="primary" size="small" class="comment-card-btn">关注</el-button>
+            <el-button type="primary" size="small" class="comment-card-btn">关注</el-button>
           </div>
           <div class="comment-card-right-bottom">
-          <div class="comment-card-right">
-            <label class="comment-title">{{comment.title}}</label>
-            <textarea class="comment-card-comment" disabled="true" v-model="comment.comment"></textarea>
-          </div>
-          <div class="comment-card-buttom-room">
-          <div class="comment-card-buttom" v-for="(item,index) in comment.chatu" :key="index" >
-        
-            <img :src="item" class="comment-bottom" />
-   
-          </div>
-          </div>
+            <div class="comment-card-right">
+              <label class="comment-title">{{comment.title}}</label>
+              <textarea class="comment-card-comment" disabled="true" v-model="comment.comment"></textarea>
+            </div>
+            <div class="comment-card-buttom-room">
+              <div class="comment-card-buttom" v-for="(item,index) in comment.chatu.slice(0,3)" :key="index">
+                <img :src="item" class="comment-bottom" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -94,23 +92,16 @@
         <div class="buttom-right-top">
           <div class="uprightdown-title">
             <label class="left">热门圈子</label>
-            <label class="right">更多圈子 > ></label>
+            <label class="right">更多圈子 ></label>
           </div>
           <div class="buttom-right-top-buttom">
-            <div class="buttom-right-top-left">
-              <div class="paiming1">1</div>
-              <div class="paiming2">2</div>
-              <div class="paiming3">3</div>
-              <div class="paiming-ather">4</div>
-              <div class="paiming-ather">5</div>
-              <div class="paiming-ather">6</div>
-              <div class="paiming-ather">7</div>
-              <div class="paiming-ather">8</div>
-            </div>
+            
 
-            <div class="buttom-right-top-right" >
-              <div class="xinxicard" v-for="(xinxi,index) in xinxi" :key="index">
-                <img :src="xinxi.rmtx" class="xinxiTX">
+            <div class="buttom-right-top-right">
+              <div class="xinxicard" v-for="(xinxi,index) in xinxi.slice(0,8)" :key="index">
+                <div class="paiming-ather" :class="[abcd == index?aaa:bbb]" v-if="index ==0 || index ==1 ">{{index+1}}</div>
+                <div class="paiming-ather" :class="[2 == index?ccc:ddd]" v-else>{{index+1}}</div>
+                <img :src="xinxi.rmtx" class="xinxiTX" />
                 <div class="xinxicard-miaoshu">
                   <label class="xinxicard-miaoshu-title">{{xinxi.title}}</label>
                   <label>{{xinxi.miaoshu}}</label>
@@ -120,13 +111,13 @@
           </div>
         </div>
 
-        <div class="buttom-right-buttom">
+        <div class="uprightdown">
           <div class="uprightdown-title">
-            <label class="left">热门活动</label>
-            <label class="right">更多活动 > ></label>
+            <label class="left">热门动态</label>
+            <label class="right">更多动态 > ></label>
           </div>
-          <div>
-            <el-carousel trigger="click" height="228px">
+          <div class="uprightdown-carousel">
+            <el-carousel trigger="click" height="270px">
               <el-carousel-item :key="id" v-for="(Carousel,id) in Carousel">
                 <img :src="Carousel.Carousel2" class="Carousel-pic" />
               </el-carousel-item>
@@ -152,6 +143,11 @@ export default {
   data() {
     return {
       msg: "123",
+      abcd:0,
+      aaa:'paiming-1',
+      bbb:'paiming-2',
+      ccc:'paiming-3',
+      ddd:'paiming-ather',
       card: [
         {
           id: 1,
@@ -203,91 +199,81 @@ export default {
           id: 4,
           Carousel4
         },
-        {
-          id: 5,
-          Carousel5
-        }
       ],
       comment: [
         {
-          id:'1',
+          id: "1",
           Userhead,
-          username:"风流倜傥宁采臣",
-          Grade:'50',
-          Post:'99',
-          integral:'500',
-          title:"九条命的爱情",
-          comment:"Pellentesque iaculis, augue eu bibendum posuere, erat orci vestibulum mi, id tempor augue enim ut sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris scelerisque orci sed sapien vulputate aliquam. Sed volutpat maximus libero eget porttitor. Ut a massa porta, dapibus justo sed, varius sapien. Cum socis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent neque arcu, aliquam ut eros sollicitudin, fermentum venenatis risus. Vestibulum eleifend ligula a odio tristique, et molestie lacus pretium. Etiam tempus ornare eros vel pharetra. Pellentesque in felis quam. In risus justo, congue ut quam vel, dictum dapibus tristique, et molestie lacus pretium. Etiam tempus ornare eros vel pharetra. Pellentesque in felis quam. In risus justo, congue ut quam vel, dictum nunc.Pellentesque iaculis, augue eu bibendum posuere, erat orci vestibulum mi, id tempor augue enim ut sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris scelerisque orci sed sapien vulputate aliquam. Sed volutpat maximus libero eget porttitor. Ut a massa porta, dapibus justo sed, varius sapien. Cum socis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent neque arcu, aliquam ut eros sollicitudin, fermentum venenatis risus. Vestibulum eleifend ligula a odio tristique, et molestie lacus pretium. Etiam tempus ornare eros vel pharetra. Pellentesque in felis quam. In risus justo, congue ut quam vel, dictum dapibus tristique, et molestie lacus pretium. Etiam tempus ornare eros vel pharetra. Pellentesque in felis quam. In risus justo, congue ut quam vel, dictum nunc.",
-          chatu:[
-            Carousel1,
-            Carousel2,
-            Carousel3,
-            Carousel4
-          ]
+          username: "风流倜傥宁采臣",
+          Grade: "50",
+          Post: "99",
+          integral: "500",
+          title: "九条命的爱情",
+          comment:"狙击手作为现代战争环境下一种相对特殊的远程兵种，凭借着低调的风格，危险的气质，一击必杀的隐忍和深藏不露的作战方式，渐渐在各类游戏当中发展出了属于自己的科技树和生态链。一把杀敌于无形的狙击枪，既是区分抖音萌新和油管大佬的分水岭，也是一些“蹲逼”最终成长能否为“地藏”的试金石。狙击手作为现代战争环境下一种相对特殊的远程兵种，凭借着低调的风格，危险的气质，一击必杀的隐忍和深藏不露的作战方式，渐渐在各类游戏当中发展出了属于自己的科技树和生态链。一把杀敌于无形的狙击枪，既是区分抖音萌新和油管大佬的分水岭，也是一些“蹲逼”最终成长能否为“地藏”的试金石。",
+          chatu: [Carousel1, Carousel2, Carousel3, Carousel4]
         },
-         {
-          id:'2',
+        {
+          id: "2",
           Userhead,
-          username:"宁采臣",
-          Grade:'40',
-          Post:'90',
-          integral:'5000',
-          title:"九爱情",
-          comment:"Pellentesque iaculis, augue eu bibendum posuere, erat orci vestibulum mi, id tempor augue enim ut sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris scelerisque orci sed sapien vulputate aliquam. Sed volutpat maximus libero eget porttitor. Ut a massa porta, dapibus justo sed, varius sapien. Cum socis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent neque arcu, aliquam ut eros sollicitudin, fermentum venenatis risus. Vestibulum eleifend ligula a odio tristique, et molestie lacus pretium. Etiam tempus ornare eros vel pharetra. Pellentesque in felis quam. In risus justo, congue ut quam vel, dictum dapibus tristique, et molestie lacus pretium. Etiam tempus ornare eros vel pharetra. Pellentesque in felis quam. In risus justo, congue ut quam vel, dictum nunc.Pellentesque iaculis, augue eu bibendum posuere, erat orci vestibulum mi, id tempor augue enim ut sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris scelerisque orci sed sapien vulputate aliquam. Sed volutpat maximus libero eget porttitor. Ut a massa porta, dapibus justo sed, varius sapien. Cum socis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent neque arcu, aliquam ut eros sollicitudin, fermentum venenatis risus. Vestibulum eleifend ligula a odio tristique, et molestie lacus pretium. Etiam tempus ornare eros vel pharetra. Pellentesque in felis quam. In risus justo, congue ut quam vel, dictum dapibus tristique, et molestie lacus pretium. Etiam tempus ornare eros vel pharetra. Pellentesque in felis quam. In risus justo, congue ut quam vel, dictum nunc.",
-          chatu:[
-            Carousel1,
-            Carousel2,
-            Carousel3,
-            Carousel4
-          ]
-        },
+          username: "宁采臣",
+          Grade: "40",
+          Post: "90",
+          integral: "5000",
+          title: "九爱情",
+          comment:"狙击手作为现代战争环境下一种相对特殊的远程兵种，凭借着低调的风格，危险的气质，一击必杀的隐忍和深藏不露的作战方式，渐渐在各类游戏当中发展出了属于自己的科技树和生态链。一把杀敌于无形的狙击枪，既是区分抖音萌新和油管大佬的分水岭，也是一些“蹲逼”最终成长能否为“地藏”的试金石。狙击手作为现代战争环境下一种相对特殊的远程兵种，凭借着低调的风格，危险的气质，一击必杀的隐忍和深藏不露的作战方式，渐渐在各类游戏当中发展出了属于自己的科技树和生态链。一把杀敌于无形的狙击枪，既是区分抖音萌新和油管大佬的分水岭，也是一些“蹲逼”最终成长能否为“地藏”的试金石。",
+          chatu: [Carousel1, Carousel2, Carousel3, Carousel4]
+        }
       ],
-      xinxi:[
+      xinxi: [
         {
           rmtx,
-          title:"哇哈哈",
-          miaoshu:"九条命的爱情半条命",
-        },
-        {
-          rmtx,
-          title:"哇哈哈",
-          miaoshu:"九条命的爱情半条命",
-        },
-         {
-          rmtx,
-          title:"哇哈哈",
-          miaoshu:"九条命的爱情半条命",
-        },
-         {
-          rmtx,
-          title:"哇哈哈",
-          miaoshu:"九条命的爱情半条命",
-        },
-         {
-          rmtx,
-          title:"哇哈哈",
-          miaoshu:"九条命的爱情半条命",
+          title: "哇哈哈",
+          miaoshu: "九条命的爱情半条命"
         },
         {
           rmtx,
-          title:"哇哈哈",
-          miaoshu:"九条命的爱情半条命",
+          title: "哇哈哈",
+          miaoshu: "九条命的爱情半条命"
         },
         {
           rmtx,
-          title:"哇哈哈",
-          miaoshu:"九条命的爱情半条命",
+          title: "哇哈哈",
+          miaoshu: "九条命的爱情半条命"
         },
         {
           rmtx,
-          title:"哇哈哈",
-          miaoshu:"九条命的爱情半条命",
+          title: "哇哈哈",
+          miaoshu: "九条命的爱情半条命"
         },
-        
+        {
+          rmtx,
+          title: "哇哈哈",
+          miaoshu: "九条命的爱情半条命"
+        },
+        {
+          rmtx,
+          title: "哇哈哈",
+          miaoshu: "九条命的爱情半条命"
+        },
+        {
+          rmtx,
+          title: "哇哈哈",
+          miaoshu: "九条命的爱情半条命"
+        },
+        {
+          rmtx,
+          title: "哇哈哈",
+          miaoshu: "九条命的爱情半条命"
+        }
       ],
       Advertisement,
       circlenumbaer: "18"
     };
+  },
+  methods:{
+    morecircle:{
+      
+    }
   }
 };
 </script>
@@ -296,18 +282,17 @@ export default {
 <style scoped>
 .card {
   width: 100%;
-  height: 155px;
-  padding-top: 10px;
-  box-shadow: 0px 5px 5px 1px rgba(112, 112, 112, 0.5);
+  height: 150px;
 }
 .card-room {
   width: 210px;
-  height: 225px;
+  height: 200px;
   padding-top: 10px;
   margin-top: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: rgba(42, 130, 228, 0.3) solid 1px;
 }
 .card-title {
   font-weight: bold;
@@ -335,8 +320,14 @@ export default {
 
 .card-down {
   margin-top: 10px;
-  margin: 10px 10px 5px 10px;
+  margin: 10px 10px 0px 10px;
 }
+.jianjie{
+  color: rgba(56, 56, 56, 1);
+	font-size: 14px;
+	line-height: 150%;
+}
+
 .record {
   width: 50%;
   font-size: 15px;
@@ -357,35 +348,31 @@ export default {
   width: 100%;
   height: 100%;
 }
-.Userhead{
+.Userhead {
   width: 108px;
   height: 109px;
 }
-.comment-bottom{
+.comment-bottom {
   width: 140px;
   height: 100px;
 }
-
 
 .uprightup-label {
   margin-top: 20px;
 }
 
 .btn-up {
-  width: 50%;
-  margin-top: 10px;
+  width: 30%;
   background-color: #263ec4;
 }
 .btn-up2 {
   margin-top: 15px;
   background-color: #263ec4;
 }
-.comment-card-btn{
-  background-color: #e35c32;
-  border: 0px
+.comment-card-btn {
+  background-color: #263ec4;
+  border: 0px;
 }
-
-
 
 .Overall {
   margin-left: 2%;
@@ -395,32 +382,52 @@ export default {
   flex-wrap: wrap;
 }
 .upleft {
-  width: 70%;
+  width: 65%;
   margin-top: 2%;
+  padding-left: 2%;
+  padding-top: 2%;
+  padding-right:2%; 
+  border: rgba(42, 130, 228, 0.3) solid 1px;
+
 }
 .upleftup {
   width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  justify-content: space-between
 }
 .left {
   text-align: left;
   width: 50%;
-  font-size: 20px;
+  letter-spacing: 2px;
+	color: rgba(56, 56, 56, 1);
+	font-size: 18px;
+	line-height: 150%;
   font-weight: bold;
-  color: rgb(83, 83, 255);
 }
+.right-frist{
+  background-color: #263ec4
+}
+/* .left-first{
+  width: 87px;
+	height: 48px;
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(3, 92, 193, 1);
+	font-size: 16px;
+	line-height: 150%;
+	text-align: center;
+	font-weight: bold;
+} */
 .right {
   text-align: right;
+  padding-top: 5px;
   width: 50%;
   font-size: 10px;
-  color: #63c3d4;
-  text-decoration: underline;
+  color: rgba(3, 92, 193, 1);
 }
 .upleftdown {
   width: 100%;
-  margin-top: 20px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -428,7 +435,7 @@ export default {
 }
 
 .upright {
-  width: 30%;
+  width: 35%;
   margin-top: 2%;
   display: flex;
   flex-direction: column;
@@ -440,25 +447,27 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: #e0dbdb solid 1px;
+  border: rgba(42, 130, 228, 0.3) solid 1px;
 }
 .uprightdown {
   width: 85%;
   height: 350px;
   margin-top: 20px;
-  border: #e0dbdb solid 1px;
+  border: rgba(42, 130, 228, 0.3) solid 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center
 }
 .uprightdown-title {
-  width: 100%;
+  width: 85%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   padding: 10px 10px 10px 10px;
 }
 .uprightdown-carousel {
-  width: 100%;
-  height: 100%;
-  margin: 20px 0 20px 0;
+  width: 85%;
+
 }
 
 .center {
@@ -467,7 +476,6 @@ export default {
 }
 
 .buttom {
-  margin-left: 2%;
   margin-bottom: 2%;
   display: flex;
   flex-direction: row;
@@ -475,11 +483,11 @@ export default {
 }
 
 .buttom-left {
-  width: 70%;
+  width: 60%;
   margin-top: 2%;
 }
 .buttom-right {
-  width: 30%;
+  width: 40%;
   margin-top: 2%;
   display: flex;
   flex-direction: column;
@@ -491,162 +499,161 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: #aa97ff solid 1px;
+  border: rgba(42, 130, 228, 0.3) solid 1px;
 }
-.buttom-right-buttom {
-  width: 85%;
-  height: 270px;
-  margin-top: 40px;
-  border: #aa97ff solid 1px;
-}
-.comment-card{
+.comment-card {
   width: 100%;
   height: 400px;
   padding: 10px 10px 10px 10px;
+  margin-bottom: 20px;
   display: flex;
-  margin-bottom: 40px
+  border: rgba(42, 130, 228, 0.3) solid 1px;
 }
-.comment-card-left{
+.comment-card-left {
   width: 20%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center
+  align-items: center;
 }
-.comment-card-right{
+.comment-card-right {
   width: 100%;
   height: 80%;
   display: flex;
   flex-direction: column;
 }
-.comment-card-center{
+.comment-card-center {
+  font-size: 13px;
+  line-height: 150%;
   display: flex;
   flex-direction: column;
   align-items: left;
-  margin: 10px 0 10px 0
+  margin: 10px 0 10px 0;
 }
-.comment-card-left-title{
+.comment-card-left-title {
   margin-top: 10px;
-  font-size: 15px;
+  font-size: 14px;
   color: #1029b9;
 }
-.comment-title{
-  margin-bottom: 20px
+.comment-title {
+  margin: 20px 0px 0px 20px;
+  color: rgba(56, 56, 56, 1);
+	font-size: 14px;
+	line-height: 150%;
+  font-weight: bold;
 }
-.comment-card-comment{
+.comment-card-comment {
   width: 100%;
-  height: 80%;
+  height: 220px;
+  padding: 20px;
   background-color: #ffffff;
-  resize:none; 
+  resize: none;
   border: 0px;
+  color: rgba(56, 56, 56, 1);
+	font-size: 14px;
+  line-height: 150%;
 }
-.comment-card-buttom{
-  width: 20%;
+.comment-card-buttom {
+  width: 25%;
 }
-.comment-card-right-bottom{
+.comment-card-right-bottom {
   width: 100%;
   height: 100%;
+  margin-left: 2%;
   display: flex;
   flex-direction: column;
-
 }
-.comment-card-buttom-room{
-  width: 100%;
-  height: 20%;
+.comment-card-buttom-room {
+  width: 90%;
+  padding-left: 2%; 
   display: flex;
   flex-direction: row;
-  justify-content: space-between
-
+  justify-content: space-between;
 }
-.buttom-right-top-buttom{
+.buttom-right-top-buttom {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
-  margin: auto
+  margin: auto;
 }
-.buttom-right-top-left{
+.buttom-right-top-left {
   width: 15%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.buttom-right-top-right{
+.buttom-right-top-right {
   width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
   align-content: center;
-  margin-top: 5px
+  margin-top: 5px;
 }
 
+.paiming-1 {
+  width: 27px;
+  height: 27px;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(212, 48, 48, 1)!important;
+  font-size: 24px;
+  line-height: 150%;
+  text-align: center;
+  margin: auto;
+}
+.paiming-2 {
+  width: 27px;
+  height: 27px;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(250, 126, 1, 1)!important;
+  font-size: 24px;
+  line-height: 150%;
+  text-align: center;
+  margin: auto;
+}
+.paiming-3 {
+  width: 27px;
+  height: 27px;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(245, 227, 69, 1)!important;
+  font-size: 24px;
+  line-height: 150%;
+  text-align: center;
+  margin: auto;
+}
+.paiming-ather {
+  width: 27px;
+  height: 27px;
+  padding-top: 4px;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(0, 145, 255, 1);
+  font-size: 14px;
+  line-height: 150%;
+  text-align: center;
+  margin: auto;
+}
 
-
-
-.paiming1{
-  width: 34px;
-	height: 34px;
-	color: rgba(255, 255, 255, 1);
-	background-color: rgba(212, 48, 48, 1);
-	border-radius: 18px;
-	font-size: 24px;
-	line-height: 150%;
-	text-align: center; 
-  margin: auto 
-}
-.paiming2{
-  width: 34px;
-	height: 34px;
-	color: rgba(255, 255, 255, 1);
-	background-color: rgba(250, 126, 1, 1);
-	border-radius: 18px;
-	font-size: 24px;
-	line-height: 150%;
-	text-align: center; 
-  margin: auto 
-}
-.paiming3{
-  width: 34px;
-	height: 34px;
-	color: rgba(255, 255, 255, 1);
-	background-color: rgba(245, 227, 69, 1);
-	border-radius: 18px;
-	font-size: 24px;
-	line-height: 150%;
-	text-align: center; 
-  margin: auto 
-}
-.paiming-ather{
-  width: 34px;
-	height: 34px;
-	color: rgba(255, 255, 255, 1);
-	background-color: rgba(0, 145, 255, 1);
-	border-radius: 18px;
-	font-size: 24px;
-	line-height: 150%;
-	text-align: center; 
-  margin: auto 
-}
-.xinxicard{
+.xinxicard {
   width: 100%;
   height: 50px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 6px
+  margin-bottom: 6px;
 }
-.xinxiTX{
+.xinxiTX {
   width: 49px;
   height: 49px;
 }
-.xinxicard-miaoshu{
+.xinxicard-miaoshu {
   width: 75%;
   display: flex;
   flex-direction: column;
   margin-top: 5px;
 }
-.xinxicard-miaoshu-title{
-  font-weight: bold
+.xinxicard-miaoshu-title {
+  font-weight: bold;
 }
 </style>
 
