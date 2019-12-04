@@ -6,7 +6,6 @@
       <img src="@/assets/comment/xingxing1.svg" v-else />
     </div>
     <div class="scoreTotal_text">{{scoreTotal}}分</div>
-    <div class="scoreTotal_text2">(共有36份评测)</div>
   </div>
 </template>
 <script>
@@ -26,7 +25,7 @@ export default {
 <style lang='less' scoped>
 .total_home {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   div:nth-child(2) {
     color: rgb(156, 118, 118);

@@ -8,7 +8,7 @@
       <div class="disappear">
         <img src="../../icons/svg/horn.svg" class="img" />
         <div class="disappear_text">客户端下载地址：</div>
-        <div v-for="item in list" class="web" :key="item">
+        <div v-for="item in list" class="web" :key="item.id">
           <div class="web_text">{{item.web}}</div>
           <div>
             <img :src="item.img" class="web_img" />
@@ -21,15 +21,17 @@
     <!-- 第一模块 -->
     <div class="content">
       <!-- left-top -->
-      <div style="width:50%;">
+      <div class="left">
         <div>
           <!-- first -->
           <div class="title">{{title}}</div>
           <!-- second -->
           <div class="titlecon">{{titlecon}}</div>
           <!-- third -->
-          <div v-for="item1 in list1" :key="item1">
-            <div class="cocon">{{item1}}</div>
+          <div v-for="item1 in list1" :key="item1.id" class="title1">
+            <img src="../../icons/svg/arrow.svg" class="arrow" />
+            <div class="cocon">{{item1.con}}</div>
+            <div class="clear"></div>
           </div>
         </div>
         <!-- left-min -->
@@ -39,31 +41,37 @@
           <!-- second -->
           <div class="titlecon">{{titlecon1}}</div>
         </div>
-        <!-- left-bottom -->
-        <div class="leftbottom">
-          <!-- left -->
-          <div class="Headlines">点评台</div>
-          <div class="comment1">发布观点，您可以获得丰富的点评奖励。</div>
-          <div class="comment">点击这里发表点评</div>
-        </div>
       </div>
       <!-- right -->
-      <div style="width:50%;">
-        <div style="float:right">
+      <div class="right">
+        <div>
           <img :src="nowwhe" class="wheimg" />
         </div>
-        <div class="comment2">更多评测 > ></div>
-        <!-- 清除浮动 -->
-        <div class="clear"></div>
       </div>
     </div>
+    <!-- 点播台 -->
+    <div class="bar">
+      <div class="Headlines1">点评台</div>
+      <div class="bar_first">发布观点，您可以获得丰富的点评奖励。</div>
+      <div class="bar_second">点击这里发表点评</div>
+      <div class="bar_third">更多评测 ></div>
+    </div>
+
     <!-- 第二模块 -->
     <div class="second">
-      <div v-for="item2 in list2" :key="item2" class="box">
-        <img :src="item2.img" class="second_img" />
+      <div v-for="item2 in list2" :key="item2.id" class="box">
         <div>
-          <!-- 标题 -->
-          <div class="second_title">{{item2.title}}</div>
+          <img :src="item2.img" class="second_img" />
+        </div>
+        <div class="box1">
+          <!-- 用户 -->
+          <div class="second_name">{{item2.name}}</div>
+          <!-- 状态 -->
+          <div class="second_state">{{item2.state}}</div>
+          <!-- 游戏 -->
+          <div class="second_game">{{item2.game}}</div>
+          <!-- 清除缓存 -->
+          <div class="clear"></div>
           <!-- 内容 -->
           <div class="second_con">{{item2.con}}</div>
         </div>
@@ -76,19 +84,24 @@
     <!-- 第三模块 -->
     <div>
       <!-- top -->
-      <div class="third">
-        <div class="Headlines">游戏技巧</div>
-        <div class="third_mid">发布各类游戏攻略的平台，包括游戏攻略、心得秘籍、视频攻略、游戏技巧、强档图文攻略。</div>
+      <div class="bar">
+        <div class="Headlines1">游戏技巧</div>
+        <div class="bar_first1">发布各类游戏攻略的平台，包括游戏攻略、心得秘籍、视频攻略、游戏技巧、强档图文攻略。</div>
         <div class="third_right">
           <div style="float: right;">有奖征文，点击进入投稿平台</div>
+          <!-- 清除浮动 -->
+          <div class="clear"></div>
         </div>
       </div>
       <!-- min -->
       <div class="min">
-        <div v-for="item3 in list3" :key="item3" class="min_frame">
-          <div class="min_title">{{item3.title}}</div>
-          <div v-for="item4 in item3.con" :key="item4">
-            <div class="min_con">{{item4}}</div>
+        <div v-for="item3 in list3" :key="item3.title" class="min_frame">
+          <div class="web" style="  margin-bottom: 15px;">
+            <div class="Headlines1">{{item3.title}}</div>
+            <div class="more">{{item3.more}}</div>
+          </div>
+          <div v-for="item4 in item3.con" :key="item4.id">
+            <div class="min_con">{{item4.cons}}</div>
           </div>
         </div>
       </div>
@@ -96,23 +109,22 @@
     <!-- 第四模块 -->
     <div>
       <!-- top -->
-      <div class="fourth">
-        <div class="Headlines">积分商城</div>
-        <div class="fourth_min">发布帖子、发布点评以及站点奖励获得积分可获得大量话费、优惠券以及实物</div>
+      <div class="bar">
+        <div class="Headlines1">积分商城</div>
+        <div class="bar_first1">发布帖子、发布点评以及站点奖励获得积分可获得大量话费、优惠券以及实物</div>
         <div class="fourth_right">
-          <div style="float:right">有奖征文，点击进入投稿平台</div>
+          <div >有奖征文，点击进入投稿平台</div>
         </div>
       </div>
       <!-- min -->
       <div class="botton">
-          <div v-for="item5 in list4" :key="item5" class="last">
-              <img :src="item5.img" class="last_img">
-              <div class="last_money">{{item5.money}}</div>
-              <div class="last_text">
-                <button class="last_button">{{item5.text}}</button>
-              </div>
-              
+        <div v-for="item5 in list4" :key="item5.img" class="last">
+          <img :src="item5.img" class="last_img" />
+          <div class="last_money">{{item5.money}}</div>
+          <div class="last_text">
+            <button class="last_button">{{item5.text}}</button>
           </div>
+        </div>
       </div>
     </div>
   </div>
@@ -124,34 +136,39 @@ export default {
   components: {
     DragProcess
   },
-  methods: {},
+  methods: {
+  },
   data() {
     return {
+      n: 1,
       list: [
         {
+          id: "1",
           web: "AAA.COM",
           img: require("../../icons/svg/stars.svg")
         },
         {
+          id: "2",
           web: "AAA.COM",
           img: require("../../icons/svg/stars.svg")
         },
         {
+          id: "3",
           web: "AAA.COM",
           img: require("../../icons/svg/stars.svg")
         }
       ],
       title: "魔域，魔域互通版为官方运营正版游戏",
       titlecon:
-        "Tristique,et molestie lacus pertium. Etiam tempus ornare erocs vel pharetra. Pellenterque in felis quam. In risus justo, congue ut quam vel, dictum dapibus nuclacus pretium. Etiam tempus ornare eros vel pharetra. Pellentesque in felis quam.In risus justo.",
+        "狙击手作为现代战争环境下一种相对特殊的远程兵种，凭借着低调的风格，危险的气质，一击必杀的隐忍和深藏不露的作战方式，渐渐在各类游戏当中发展出了属于自己的科技树和生态链。一把杀敌于无形的狙击枪，既是区分抖音萌新和油管大佬的分水岭。",
       list1: [
-        "> *****************",
-        "> *****************",
-        "> *****************",
-        "> *****************"
+        { con: "标题标题标题标题标题标题标题标题标题标题", id: "1" },
+        { con: "标题标题标题标题标题标题标题标题标题标题", id: "2" },
+        { con: "标题标题标题标题标题标题标题标题标题标题", id: "3" },
+        { con: "标题标题标题标题标题标题标题标题标题标题", id: "4" }
       ],
       titlecon1:
-        "Tristique, et molestie lacus pretium. Etiam tempus ornare eros vel pharetra. Pellentesque in felis quam. In risus justo, congue ut quam vel, dictum dapibus nunc.lacus pretium. Etiam tempus ornare eros vel pharetra. ",
+        "狙击手作为现代战争环境下一种相对特殊的远程兵种，凭借着低调的风格，危险的气质，一击必杀的隐忍和深藏不露的作战方式，渐渐在各类游戏当中发展出了属于自己的科技树和生态链。一把杀敌于无形的狙击枪，既是区分抖音萌新和油管大佬的分水岭，也是一些“蹲逼”最终成长能否为“地藏”的试金石。",
       wheplanting: [
         require("../../assets/home/wp1.jpg"),
         require("../../assets/home/wp2.jpg"),
@@ -163,142 +180,175 @@ export default {
       nowwhe: require("../../assets/home/wp1.jpg"),
       list2: [
         {
-          img: require("../../assets/home/headp4.jpg"),
-          title: "单行文字啊啊啊啊",
-          con:
-            " In risus justo, congue ut quam vel, dictum dapibus nunc.lacus pretium. Etiam tempus ornare eros vel pharetra.  tum venenatis risus. Vestibulum eleifend ligula a odio tristique, et molestie."
-        },
-        {
+          id: "1",
           img: require("../../assets/home/headp1.jpg"),
-          title: "单行文字啊啊啊啊",
+          name: "杨雪儿",
+          state: "评测了",
+          game: "魔域3",
           con:
-            " In risus justo, congue ut quam vel, dictum dapibus nunc.lacus pretium. Etiam tempus ornare eros vel pharetra.  tum venenatis risus. Vestibulum eleifend ligula a odio tristique。"
+            "但其庞大复杂程度也让不少新玩家难以掌握，本篇我们就来针对新玩家进行一些入门指引。我只有两行，多出看不见。但其庞大复杂程度也让不少新玩家难以掌握，本篇我们就来针对新玩家进行一些入门指引。"
         },
         {
+          id: "2",
+          img: require("../../assets/home/headp2.png"),
+          name: "杨雪儿",
+          state: "评测了",
+          game: "魔域3",
+          con:
+            "但其庞大复杂程度也让不少新玩家难以掌握，本篇我们就来针对新玩家进行一些入门指引。我只有两行，多出看不见。但其庞大复杂程度也让不少新玩家难以掌握，本篇我们就来针对新玩家进行一些入门指引。"
+        },
+        {
+          id: "3",
           img: require("../../assets/home/headp3.jpg"),
-          title: "单行文字啊啊啊啊",
+          name: "杨雪儿",
+          state: "评测了",
+          game: "魔域3",
           con:
-            " In risus justo, congue ut quam vel, dictum dapibus nunc.lacus pretium. Etiam tempus ornare eros vel pharetra.  tum venenatis risus. Vestibulum eleifend ligula a odio tristique, et molesti."
+            "但其庞大复杂程度也让不少新玩家难以掌握，本篇我们就来针对新玩家进行一些入门指引。我只有两行，多出看不见。但其庞大复杂程度也让不少新玩家难以掌握，本篇我们就来针对新玩家进行一些入门指引。"
         },
         {
-          img: require("../../assets/home/headp2.jpg"),
-          title: "单行文字啊啊啊啊",
+          id: "4",
+          img: require("../../assets/home/headp4.jpg"),
+          name: "杨雪儿",
+          state: "评测了",
+          game: "魔域3",
           con:
-            " In risus justo, congue ut quam vel, dictum dapibus nunc.lacus pretium. Etiam tempus ornare eros vel pharetra.  tum venenatis risus. Vestibulum eleifend ligula a odio tristique。"
+            "但其庞大复杂程度也让不少新玩家难以掌握，本篇我们就来针对新玩家进行一些入门指引。我只有两行，多出看不见。但其庞大复杂程度也让不少新玩家难以掌握，本篇我们就来针对新玩家进行一些入门指引。"
+        },
+        {
+          id: "5",
+          img: require("../../assets/home/headp5.jpg"),
+          name: "杨雪儿",
+          state: "评测了",
+          game: "魔域3",
+          con:
+            "但其庞大复杂程度也让不少新玩家难以掌握，本篇我们就来针对新玩家进行一些入门指引。我只有两行，多出看不见。但其庞大复杂程度也让不少新玩家难以掌握，本篇我们就来针对新玩家进行一些入门指引。"
+        },
+        {
+          id: "6",
+          img: require("../../assets/home/headp6.jpg"),
+          name: "杨雪儿",
+          state: "评测了",
+          game: "魔域3",
+          con:
+            "但其庞大复杂程度也让不少新玩家难以掌握，本篇我们就来针对新玩家进行一些入门指引。我只有两行，多出看不见。但其庞大复杂程度也让不少新玩家难以掌握，本篇我们就来针对新玩家进行一些入门指引。"
         }
       ],
-      advertisement: require("../../assets/home/Advertisement.jpg"),
+      advertisement: require("../../assets/home/Advertisement.png"),
       list3: [
         {
           title: "强档攻略",
+          more: "更多>>",
           con: [
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈"
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "1" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "2" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "3" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "4" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "5" }
           ]
         },
         {
           title: "视频攻略",
+          more: "更多>>",
           con: [
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈"
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "1" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "2" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "3" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "4" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "5" }
           ]
         },
         {
           title: "真人",
+          more: "更多>>",
           con: [
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈"
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "1" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "2" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "3" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "4" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "5" }
           ]
         },
         {
           title: "联机教程",
+          more: "更多>>",
           con: [
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈"
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "1" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "2" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "3" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "4" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "5" }
           ]
         },
         {
           title: "游戏问答",
+          more: "更多>>",
           con: [
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈"
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "1" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "2" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "3" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "4" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "5" }
           ]
         },
         {
           title: "老虎机",
+          more: "更多>>",
           con: [
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈",
-            "汇集全网最新最全的游戏技巧。哇哈哈哈哈哈哈哈"
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "1" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "2" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "3" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "4" },
+            { cons: "【攻略】文字标题文字标题文字标题文字标题-1", id: "5" }
           ]
         }
       ],
-      list4:[
+      list4: [
         {
-            img:require("../../assets/home/integral1.jpg"),
-            money:'20元话费',
-            text:'兑换'
+          id: "1",
+          img: require("../../assets/home/integral1.jpg"),
+          money: "20元话费",
+          text: "兑换"
         },
-         {
-            img:require("../../assets/home/integral2.jpg"),
-            money:'50元话费',
-            text:'兑换'
-        },
-         {
-            img:require("../../assets/home/integral3.jpg"),
-            money:'20元话费',
-            text:'兑换'
-        }, {
-            img:require("../../assets/home/integral4.jpg"),
-            money:'20元话费',
-            text:'兑换'
-        }, 
         {
-            img:require("../../assets/home/integral5.jpg"),
-            money:'20元话费',
-            text:'兑换'
+          id: "2",
+          img: require("../../assets/home/integral2.jpg"),
+          money: "50元话费",
+          text: "兑换"
         },
-         {
-            img:require("../../assets/home/integral6.jpg"),
-            money:'20元话费',
-            text:'兑换'
+        {
+          id: "3",
+          img: require("../../assets/home/integral3.jpg"),
+          money: "20元话费",
+          text: "兑换"
+        },
+        {
+          id: "4",
+          img: require("../../assets/home/integral4.jpg"),
+          money: "20元话费",
+          text: "兑换"
+        },
+        {
+          id: "5",
+          img: require("../../assets/home/integral5.jpg"),
+          money: "20元话费",
+          text: "兑换"
+        },
+        {
+          id: "6",
+          img: require("../../assets/home/integral6.jpg"),
+          money: "20元话费",
+          text: "兑换"
         }
       ]
     };
   },
   mounted: function() {
     this.nowwhe = this.wheplanting[0];
-
     var _this = this;
-
     setInterval(function() {
       _this.i++;
-
       _this.nowwhe = _this.wheplanting[_this.i];
-
       if (_this.i >= _this.wheplanting.length - 1) {
         _this.i = 0;
       }
@@ -309,31 +359,29 @@ export default {
 <style scoped>
 .first {
   /* border: salmon solid 1px; */
-  height: 130px;
+  /* height: 100px; */
+  background-color: rgba(245, 245, 245, 1);
   width: 100%;
-  padding: 40px 0px 40px 24px;
   display: flex;
   flex-direction: row;
 }
 .Headlines {
-  width: 93px;
-  height: 52px;
-  font-size: 14px;
-  line-height: 52px;
-  color: rgba(3, 92, 193, 1);
+  width: 122px;
+  height: 48px;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(3, 92, 193, 1);
+  font-size: 25px;
   text-align: center;
   font-weight: bold;
-  border: 1px solid #035cc1;
+  line-height: 48px;
 }
 .disappear {
-  border-top: 1px dotted #999999;
-  border-bottom: 1px dotted #999999;
   height: 40px;
   margin-top: 5px;
   margin-left: 10px;
   width: 89%;
   line-height: 40px;
-  font-size: 17px;
+  font-size: 14px;
   padding-left: 10px;
   display: flex;
   flex-direction: row;
@@ -364,57 +412,110 @@ export default {
 }
 .app {
   font-weight: bold;
-  color: rgba(255, 111, 35, 1);
-  margin-left: 80px;
+  color: rgba(42, 130, 228, 1);
+  /* margin-left: 80px; */
+  /* border: solid 1px springgreen; */
+  /* width: 50%; */
+  text-align: right;
+  margin-left: 285px
+}
+.left {
+  width: 55%;
+  border: rgba(204, 204, 204, 1) solid 1px;
+  padding-left: 20px;
+  /* padding-top: 20px; */
+  padding-right: 40px;
+}
+.right {
+  width: 40%;
+  margin-left: 40px;
 }
 .title {
-  color: rgba(227, 92, 50, 1);
-  font-size: 27px;
+  color: rgba(56, 56, 56, 1);
+  font-size: 20px;
   font-weight: bold;
+  padding-top: 20px;
+  /* border: sandybrown solid 1px; */
 }
 .titlecon {
   color: rgba(0, 0, 0, 1);
-  font-size: 16px;
+  font-size: 14px;
   line-height: 160%;
   margin-top: 10px;
+  margin-bottom: 20px;
+}
+.title1 {
+  height: 25px;
+  line-height: 25px;
+}
+.arrow {
+  width: 15px;
+  height: 15px;
+  float: left;
+  /* border: 1px slateblue solid; */
+  padding-top: 5px;
+}
+.Headlines1 {
+  width: 71px;
+  height: 42px;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(3, 92, 193, 1);
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 42px;
 }
 .cocon {
   color: rgba(0, 0, 0, 1);
   font-size: 16px;
-  line-height: 150%;
+  /* line-height: 25px; */
+  /* border:  solid springgreen 1px */
+}
+.bar {
+  height: 42px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(245, 245, 245, 1);
+}
+.bar_first {
+  line-height: 42px;
+  font-size: 14px;
+  margin-left: 3px;
+}
+.bar_first1 {
+  line-height: 42px;
+  font-size: 14px;
+  margin-left: 10px;
+}
+.bar_second {
+  line-height: 42px;
+  font-size: 14px;
+  color: rgba(239, 86, 86, 1);
+  margin-left: 20px;
+}
+.bar_third {
+  line-height: 42px;
+  font-size: 14px;
+  color: rgba(239, 86, 86, 1);
+  /* border: solid springgreen 1px; */
+  margin-left: 620px;
 }
 .leftbottom {
   margin-top: 30px;
   display: flex;
   flex-direction: row;
 }
-.comment {
-  color: rgba(0, 0, 0, 1);
-  font-size: 15px;
-  /* border: #035cc1 solid 1px; */
-  padding-top: 30px;
-}
-.comment1 {
-  color: rgba(0, 0, 0, 1);
-  font-size: 15px;
-  /* border: #035cc1 solid 1px; */
-  padding-top: 30px;
-  margin-left: 15px;
-}
+
 .content {
-  /* margin-top: 30px; */
-  margin-left: 20px;
+  margin-top: 30px;
+  /* margin-left: 20px; */
   margin-right: 25px;
   display: flex;
   flex-direction: row;
+  margin-bottom: 40px;
 }
-.comment2 {
-  color: rgba(0, 0, 0, 1);
-  font-size: 15px;
-  /* border: #035cc1 solid 1px; */
-  padding-top: 10px;
-  float: right;
-}
+
 .clear {
   clear: both;
 }
@@ -426,33 +527,71 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-left: 20px;
-  margin-right: 20px;
+  /* margin-top: 20px; */
+  /* border: springgreen solid 1px; */
 }
 .second_img {
-  width: 113px;
-  height: 113px;
+  border: rgba(187, 188, 175, 1) solid 1px;
+  padding: 5px;
+  width: 105px;
+  height: 100px;
 }
 .box {
   width: 50%;
   /* border: #035cc1 solid 1px; */
   display: flex;
   flex-direction: row;
-  margin-top: 30px;
+  margin-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: dotted rgba(153, 153, 153, 1) 1px;
 }
-.second_title {
+.box:nth-child(5) {
+  border-bottom: none;
+}
+.box:nth-child(6) {
+  border-bottom: none;
+}
+.box1 {
+  padding-right: 30px;
+  /* border: springgreen solid 1px; */
+}
+.second_name {
   margin-left: 5px;
-  font-size: 15px;
+  font-size: 17px;
+  font-weight: bold;
+  float: left;
+}
+.second_state {
+  font-size: 17px;
+  margin-left: 10px;
+  float: left;
+  color: rgba(239, 86, 86, 1);
+}
+.second_game {
+  margin-left: 10px;
+  color: rgba(80, 80, 80, 1);
+  font-size: 17px;
+  float: left;
 }
 .second_con {
   color: rgba(0, 0, 0, 1);
   font-size: 15px;
-  line-height: 140%;
+  line-height: 130%;
   margin-top: 15px;
   margin-left: 5px;
 }
+.more{
+  /* border: solid steelblue 1px; */
+  /* width: 80%; */
+  text-align: right;
+  color: rgba(3, 92, 193, 1);
+	font-size: 14px;
+  margin-top: 23px;
+  margin-left: 240px
+
+}
 .adv {
-  width: 1200px;
+  width: 100%;
   height: 110px;
   margin-top: 10px;
   margin-bottom: 15px;
@@ -471,86 +610,75 @@ export default {
   margin-left: 20px;
 }
 .third_right {
-  font-size: 15px;
+  font-size: 14px;
   /* border: #035cc1 solid 1px; */
-  width: 36%;
+  width: 43%;
+  line-height: 42px;
+  color: rgba(239, 86, 86, 1);
 }
 .min {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-left: 20px;
+  /* margin-left: 20px; */
 }
 .min_frame {
-  height: 232px;
+  height: 215px;
   width: 31.5%;
-  margin-right: 20px;
-  margin-top: 20px;
-  border: #e0e0e0 solid 1px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
-  border-top: none;
-  padding-top: 10px;
-  padding-left: 10px;
+  margin-top: 30px;
+  margin-right: 30px;
+  border-top: rgba(3, 92, 193, 1) solid 2px;
 }
-.min_title {
-  font-size: 28px;
-  margin-bottom: 10px;
+.min_frame:nth-child(3n) {
+  margin-right: 0px;
+  /* background-color: aqua */
 }
-.min_con {
-  font-size: 14px;
-  height: 20px;
-  line-height: 20px;
-  margin-left: 5px;
-}
-.fourth {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 20px;
+.min_con{
+  color: rgba(56, 56, 56, 1);
+	font-size: 14px;
+	line-height: 200%;
 }
 .fourth_right {
   /* border: #035cc1 solid 1px; */
-  width: 480px;
-  margin-top: 32px;
+  font-size: 14px;
+  /* width: 51.5%; */
+  line-height: 42px;
+  color: rgba(239, 86, 86, 1);
+  margin-left: 415px
 }
-.fourth_min {
-  /* border: #035cc1 solid 1px; */
-  width: 560px;
-  margin-top: 32px;
-  margin-left: 20px;
-}
-.last{
+
+.last {
   width: 15%;
   height: 230px;
-  margin-left:20px;
+  margin-left: 20px;
   margin-right: 20px;
   /* border: #035cc1 solid 1px  */
 }
-.botton{
+.botton {
   display: flex;
   flex-direction: row;
 }
-.last_img{
+.last_img {
   width: 155px;
   height: 112px;
 }
-.last_money{
+.last_money {
   font-size: 20px;
   height: 50px;
   line-height: 50px;
-  text-align: center
+  text-align: center;
 }
-.last_button{
+.last_button {
   width: 73px;
   height: 30px;
-  	border-radius: 3px;
-	font-size: 14px;
-	text-align: center;
-  	color: rgba(255, 255, 255, 1);
-	background-color: rgba(227, 92, 50, 1);
+  border-radius: 3px;
+  font-size: 14px;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(227, 92, 50, 1);
 }
-.last_text{
+.last_text {
   /* border: #035cc1 solid 1px; */
-  text-align: center
+  text-align: center;
 }
 </style>

@@ -89,11 +89,7 @@ export const routes = [{
       meta: {
         title: '积分商城'
       },
-      component: _import_views('mall'),
-      children: [{
-        path: 'threeRouter',
-        component: _import_views_three('mall', 'mallHomeRight/threeRouter')
-      }]
+      component: _import_views('mall')
     }
   ]
 }]
