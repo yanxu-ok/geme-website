@@ -2,19 +2,24 @@
   <div>
     <!-- 销售 -->
     <div class="right_top">
-      <!-- title -->
-      <div class="right_top_title">
-        <div @click="xiaoshou">销售冠军</div>
-        <div @click="renqi">人气冠军</div>
-      </div>
-      <!-- 三级路由 -->
-      <router-view></router-view>
+      <el-tabs type="border-card">
+        <el-tab-pane label="销售冠军">
+          <threeRouter></threeRouter>
+        </el-tab-pane>
+        <el-tab-pane label="人气冠军">
+          <threeRouter></threeRouter>
+        </el-tab-pane>
+      </el-tabs>
     </div>
   </div>
 </template>
 <script>
+import threeRouter from "./threeRouter";
 export default {
   name: "xiaoShou",
+  components: {
+    threeRouter
+  },
   data() {
     return {};
   },
@@ -23,8 +28,8 @@ export default {
       this.$router.push("/mall");
     },
     renqi() {
-      console.log(this.$route)
-      console.log(this.$router)
+      console.log(this.$route);
+      console.log(this.$router);
       this.$router.push("/mall/threeRouter");
     }
   }
@@ -33,7 +38,6 @@ export default {
 <style lang='less' scoped>
 .right_top {
   border-radius: 6px;
-  box-shadow:rgba(198, 198, 198, 0.5) 0px 0px 5px;
   .right_top_title {
     display: flex;
     align-items: center;
@@ -51,7 +55,20 @@ export default {
     }
   }
 }
-.myActive{
+.myActive {
   background-color: none;
+}
+/deep/.el-tabs--border-card {
+  border: none;
+  border-radius: 5px;
+}
+/deep/.el-tabs__nav {
+  width: 100%;
+  color: rgba(80, 80, 80, 1);
+  .el-tabs__item {
+    width: 50%;
+    text-align: center;
+    background-color: rgba(224, 224, 224, 0.79);
+  }
 }
 </style>

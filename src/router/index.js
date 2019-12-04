@@ -28,6 +28,30 @@ export const routes = [{
       component: _import_views('circle')
     },
     {
+      path: 'newcircle',
+      name: 'newcircle',
+      meta: {
+        title: '创建圈子'
+      },
+      component: _import_views('circle/newcircle')
+    },
+    {
+      path: 'circleList',
+      name: 'circleList',
+      meta: {
+        title: '圈子列表'
+      },
+      component: _import_views('circle/circleList')
+    },
+    {
+      path: 'circleforum',
+      name: 'circleforum',
+      meta: {
+        title: '圈子'
+      },
+      component: _import_views('circle/circleforum')
+    },
+    {
       path: 'game-center',
       name: 'game-center',
       meta: {
@@ -65,11 +89,7 @@ export const routes = [{
       meta: {
         title: '积分商城'
       },
-      component: _import_views('mall'),
-      children: [{
-        path: 'threeRouter',
-        component: _import_views_three('mall', 'mallHomeRight/threeRouter')
-      }]
+      component: _import_views('mall')
     }
   ]
 }]

@@ -47,7 +47,7 @@
         <div class="uprightup">
           <label class="uprightup-label">国内第一游戏社交圈</label>
           <label class="uprightup-label">共有{{circlenumbaer}}个圈子</label>
-          <el-button type="primary" size="small" class="btn-up2" @click="newcircle()">我要创圈</el-button>
+          <el-button type="primary" size="small" class="btn-up2">我要创圈</el-button>
         </div>
 
 
@@ -147,7 +147,7 @@
           <!-- 标题（热门 更多） -->
           <div class="uprightdown-title">
             <label class="left">热门动态</label>
-            <label class="right" @click="morecircle">更多动态 > ></label>
+            <label class="right">更多动态 > ></label>
           </div>
 
           <!-- 下半部分 右下方轮播图 -->
@@ -299,9 +299,6 @@ export default {
   methods:{
     morecircle(){
       this.$router.push({path:'/circleList'})
-    },
-    newcircle(){
-      this.$router.push({path:'/newcircle'})
     }
   }
 };
