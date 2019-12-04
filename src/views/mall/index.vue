@@ -39,7 +39,7 @@ import {
   phone,
   mallHomeUpRight,
   fashion
-} from "./data";
+} from "./Modules/index/data";
 export default {
   components: {
     xiaoShou,
