@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import layout from '_v/layout'
 
 const _import_views = (path) => () => import(`_v/${path}`)
-const _import_views_three = (path, path1) => () => import(`_v/${path}/${path1}`)
 
 Vue.use(VueRouter)
 
