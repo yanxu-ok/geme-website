@@ -10,7 +10,8 @@
           <div>LV50</div>
           <div>白银会员</div>
         </div>
-        <div class="guanzhu">关注</div>
+        <div class="guanzhu" @click="isShow" v-if="Isshow">关注</div>
+        <div class="guanzhu" @click="isShow" v-else>已关注</div>
         <!-- 下面区域 -->
         <div class="down">
           <div class="title">
@@ -21,9 +22,14 @@
             <!-- 左侧 -->
             <div class="content_a">
               <div class="guanzhu1">
-                <div v-for="(item, index) in 4" :key="index" class="xiao">
-                  <div>1</div>
-                  <div>关注</div>
+                <div
+                  v-for="(item, index) in myList"
+                  :key="index"
+                  class="xiao"
+                  @click="nextPage(item.title)"
+                >
+                  <div>{{item.count}}</div>
+                  <div>{{item.title}}</div>
                 </div>
               </div>
               <div class="jianjie">
@@ -38,7 +44,6 @@
             </div>
             <!-- 右侧 -->
             <div class="content_b">
-
               <div class="backg" v-for="(item, index) in 2" :key="index">
                 <div class="title1123">
                   <div>
@@ -60,7 +65,6 @@
                   创造力来规划高效的机器物流网络，以形成机械的生产超级有机体。这只最新一条评测.......
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -73,6 +77,7 @@ export default {
   name: "profile",
   data() {
     return {
+      Isshow: true,
       userInfo: [
         {
           title: "昵称",
@@ -90,10 +95,27 @@ export default {
           title: "昵称",
           content: "太空人一号"
         }
+      ],
+      myList: [
+        { title: "关注", count: 63 },
+        { title: "粉丝", count: 63 },
+        { title: "圈子", count: 6 },
+        { title: "发帖数", count: 105 }
       ]
     };
   },
-  methods: {}
+  methods: {
+    isShow() {
+      this.Isshow = !this.Isshow;
+    },
+    nextPage(...args) {
+      if (args[0] === "关注") {
+        this.$router.push("/myguanzhu");
+      } else if (args[0] === "粉丝") {
+        this.$router.push("/myfans");
+      }
+    }
+  }
 };
 </script>
 <style lang='less' scoped>
@@ -189,7 +211,7 @@ export default {
     width: 100%;
     display: flex;
     .content_a {
-      margin-top: 1%;
+      margin-top: 3%;
       flex: 2;
     }
     .content_b {
@@ -204,7 +226,7 @@ export default {
       box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.11428571428571431);
       border-radius: 6px;
       .xiao {
-        margin: 4% 7%;
+        margin: 4% 5%;
         border-right: 1px solid rgba(153, 153, 153, 1);
         padding: 1%;
         box-sizing: border-box;
@@ -293,7 +315,7 @@ export default {
   padding: 10px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.11428571428571431);
   border-radius: 6px;
-  margin-top: 2%
+  margin-top: 2%;
 }
 .text_content {
   line-height: 150%;

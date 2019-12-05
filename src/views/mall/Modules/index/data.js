@@ -1,4 +1,3 @@
-
 const _import_views = (path) => () => import(`_v/mall/Modules/index/${path}`)
 // 轮播图
 export var lunBoTu = _import_views("mallHomeLeft/lunBoTu")
@@ -19,4 +18,4 @@ export var phone = _import_views("mallHomeUp/phone")
 // 虚拟商品
 export var mallHomeUpRight = _import_views("mallHomeUp/mallHomeUpRight")
 // 时尚数码
-export var fashion = () => _import_views("mallHomeBottom/fashion")
+export var fashion = _import_views("mallHomeBottom/fashion")
