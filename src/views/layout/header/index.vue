@@ -1,26 +1,34 @@
 <template>
   <div class="header">
-    <div class="header-top">
-      <el-button size="small" type="text">注册</el-button>
-      <el-button size="small" type="text">登录</el-button>
-    </div>
     <div class="header-container">
       <logo/>
+      <list/>
       <search/>
+      <carousel/>
+      <user-info/>
     </div>
     <navbar/>
+    <notices/>
   </div>
 </template>
 <script>
 import navbar from '../navbar'
 import logo from './logo'
 import search from './search'
+import list from './list'
+import carousel from './carousel'
+import userInfo from './user-info'
+import notices from '../notices'
 export default {
   name: 'app-header',
   components: {
     navbar,
     logo,
-    search
+    search,
+    list,
+    carousel,
+    userInfo,
+    notices
   }
 }
 </script>
@@ -33,6 +41,7 @@ export default {
       
     }
     .header-container {
+      padding: 30px 50px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;

@@ -1,14 +1,14 @@
 <template>
   <div class="footer">
-    <div class="footer-text">
-      <h1 class="title">关于我们</h1>
-      <p class="desc">Morbi sed ante efficitur,pellentesque justo sit amet,
-feugiat mi.Pellentesque tinciidunt dui ut vaius
-luctus.Ut quis metus quis est pulvinar sodales ut in</p>
-    </div>
-    <div class="footer-pic">
-      <img class="pic-item" :src="pic1" alt="pic">
-      <img class="pic-item" :src="pic2" alt="pic">
+    <div class="footer-container">
+      <h1 class="about">关于我们</h1>
+      <p class="desc">
+        专业、严谨、有趣，游戏时光由热爱游戏的新老玩家组成，把关于电视游戏的一切分享给大家。
+      </p>
+      <div class="pic">
+        <img class="pic-item" :src="pic1" alt="pic">
+        <img class="pic-item" :src="pic2" alt="pic">
+      </div> 
     </div>
   </div>
 </template>
@@ -27,27 +27,25 @@ export default {
 </script>
 <style lang="less" scoped>
   .footer {
-    display: flex;
-    background: #000;
-    padding: 25px 15px 15px;
-    justify-content: space-between;
-    align-items: center;
-    .footer-text {
-      width: 400px;
-      .title {
-        color: #fff;
-        font-size: 22px;
+    box-shadow: 0px 0px 5px 0px rgba(198, 198, 198, 0.5);
+    .footer-container {
+      width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 15px 0;
+      .about {
+        color: rgba(128, 128, 128, 1);
+        font-size: 15px;
+        padding: 10px 0 25px;
       }
       .desc {
-        margin-top: 10px;
-        color: #fff;
-        line-height: 20px;
+        color: rgba(128, 128, 128, 1);
+        margin-bottom: 10px;
       }
-    }
-    .footer-pic {
       .pic-item {
         margin-left: 15px;
       }
     }
+    
   }
 </style>
