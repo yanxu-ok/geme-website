@@ -100,6 +100,21 @@ export const routes = [{
       component: _import_views('game-center')
     },
     {
+      path: 'game-detail/:id',
+      name: 'game-detail',
+      component: _import_views('game-center/modules/detail')
+    },
+    {
+      path: 'game-submit/:id',
+      name: 'game-submit',
+      component: _import_views('game-center/modules/submit')
+    },
+    {
+      path: 'game-review/:id',
+      name: 'game-review',
+      component: _import_views('game-center/modules/review')
+    },
+    {
       path: 'game-news',
       name: 'game-news',
       meta: {
