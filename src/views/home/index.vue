@@ -3,7 +3,7 @@
     <!-- 消息欄  -->
     <div class="first">
       <!-- left -->
-      <div class="Headlines">今日头条</div>
+      <div class="Headlines" id="aa">今日头条</div>
       <!-- middle -->
       <div class="disappear">
         <img src="../../icons/svg/horn.svg" class="img" />
@@ -30,7 +30,7 @@
           <!-- third -->
           <div v-for="item1 in list1" :key="item1.id" class="title1">
             <img src="../../icons/svg/arrow.svg" class="arrow" />
-            <div class="cocon">{{item1.con}}</div>
+            <div class="cocon" @click="article()">{{item1.con}}</div>
             <div class="clear"></div>
           </div>
         </div>
@@ -54,7 +54,7 @@
       <div class="Headlines1">点评台</div>
       <div class="bar_first">发布观点，您可以获得丰富的点评奖励。</div>
       <div class="bar_second">点击这里发表点评</div>
-      <div class="bar_third">更多评测 ></div>
+      <div class="bar_third" @click="eval()">更多评测 ></div>
     </div>
 
     <!-- 第二模块 -->
@@ -65,11 +65,11 @@
         </div>
         <div class="box1">
           <!-- 用户 -->
-          <div class="second_name">{{item2.name}}</div>
+          <div class="second_name" @click="personal()">{{item2.name}}</div>
           <!-- 状态 -->
           <div class="second_state">{{item2.state}}</div>
           <!-- 游戏 -->
-          <div class="second_game">{{item2.game}}</div>
+          <div class="second_game" @click="game()">{{item2.game}}</div>
           <!-- 清除缓存 -->
           <div class="clear"></div>
           <!-- 内容 -->
@@ -88,20 +88,20 @@
         <div class="Headlines1">游戏技巧</div>
         <div class="bar_first1">发布各类游戏攻略的平台，包括游戏攻略、心得秘籍、视频攻略、游戏技巧、强档图文攻略。</div>
         <div class="third_right">
-          <div style="float: right;">有奖征文，点击进入投稿平台</div>
+          <div style="float: right;" @click="contribute()">有奖征文，点击进入投稿平台</div>
           <!-- 清除浮动 -->
           <div class="clear"></div>
         </div>
       </div>
       <!-- min -->
       <div class="min">
-        <div v-for="item3 in list3" :key="item3.title" class="min_frame">
+        <div v-for="(item3) in list3" :key="item3.title" class="min_frame">
           <div class="web" style="  margin-bottom: 15px;">
             <div class="Headlines1">{{item3.title}}</div>
-            <div class="more">{{item3.more}}</div>
+            <div class="more" @click="more">{{item3.more}}</div>
           </div>
           <div v-for="item4 in item3.con" :key="item4.id">
-            <div class="min_con">{{item4.cons}}</div>
+            <div class="min_con" @click="specarticle(item3.id)">{{item4.cons}}</div>
           </div>
         </div>
       </div>
@@ -113,7 +113,7 @@
         <div class="Headlines1">积分商城</div>
         <div class="bar_first1">发布帖子、发布点评以及站点奖励获得积分可获得大量话费、优惠券以及实物</div>
         <div class="fourth_right">
-          <div >有奖征文，点击进入投稿平台</div>
+          <div @click="contribute()">有奖征文，点击进入投稿平台</div>
         </div>
       </div>
       <!-- min -->
@@ -137,6 +137,46 @@ export default {
     DragProcess
   },
   methods: {
+    //跳转个人中心页面
+    personal() {
+      // this.$router.push({ path:'/two.html'  })
+      console.log("个人中心");
+    },
+    //跳转文章页面
+    article() {
+      this.$router.push({ path:'article'  })
+      console.log("文章页面");
+    },
+    //跳转到【游戏中心-游戏内页】
+    game() {
+      // this.$router.push({ path:'/two.html'  })
+      console.log("游戏中心-游戏内页");
+    },
+    //跳转网友评测界面
+    eval() {
+      // this.$router.push({ path:'/two.html'  })
+      console.log("网友点评");
+    },
+    //跳转到投稿页面
+    contribute() {
+      this.$router.push({ path:'contribute'  })
+      console.log("投稿");
+    },
+    //跳转到【文章页】（表示某一篇文章）
+    specarticle(s) {
+      // this.$router.push({ path:'/two.html'  })
+      if (s == 2) {
+         this.$router.push({ path:'videopage'})
+        console.log("视频");
+      } else {
+        console.log("表示某一篇文章");
+      }
+    },
+    //更多
+    more() {
+      this.$router.push({ path:'more'  })
+      console.log("更多");
+    }
   },
   data() {
     return {
@@ -237,6 +277,7 @@ export default {
       advertisement: require("../../assets/home/Advertisement.png"),
       list3: [
         {
+          id:'1',
           title: "强档攻略",
           more: "更多>>",
           con: [
@@ -248,6 +289,7 @@ export default {
           ]
         },
         {
+          id:'2',
           title: "视频攻略",
           more: "更多>>",
           con: [
@@ -259,6 +301,7 @@ export default {
           ]
         },
         {
+          id:'3',
           title: "真人",
           more: "更多>>",
           con: [
@@ -270,6 +313,7 @@ export default {
           ]
         },
         {
+          id:'4',
           title: "联机教程",
           more: "更多>>",
           con: [
@@ -281,6 +325,7 @@ export default {
           ]
         },
         {
+          id:'5',
           title: "游戏问答",
           more: "更多>>",
           con: [
@@ -292,6 +337,7 @@ export default {
           ]
         },
         {
+          id:'6',
           title: "老虎机",
           more: "更多>>",
           con: [
@@ -417,7 +463,7 @@ export default {
   /* border: solid 1px springgreen; */
   /* width: 50%; */
   text-align: right;
-  margin-left: 285px
+  margin-left: 285px;
 }
 .left {
   width: 55%;
@@ -580,15 +626,14 @@ export default {
   margin-top: 15px;
   margin-left: 5px;
 }
-.more{
+.more {
   /* border: solid steelblue 1px; */
   /* width: 80%; */
   text-align: right;
   color: rgba(3, 92, 193, 1);
-	font-size: 14px;
+  font-size: 14px;
   margin-top: 23px;
-  margin-left: 240px
-
+  margin-left: 240px;
 }
 .adv {
   width: 100%;
@@ -633,10 +678,10 @@ export default {
   margin-right: 0px;
   /* background-color: aqua */
 }
-.min_con{
+.min_con {
   color: rgba(56, 56, 56, 1);
-	font-size: 14px;
-	line-height: 200%;
+  font-size: 14px;
+  line-height: 200%;
 }
 .fourth_right {
   /* border: #035cc1 solid 1px; */
@@ -644,7 +689,7 @@ export default {
   /* width: 51.5%; */
   line-height: 42px;
   color: rgba(239, 86, 86, 1);
-  margin-left: 415px
+  margin-left: 415px;
 }
 
 .last {
