@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import layout from '_v/layout'
 
 const _import_views = (path) => () => import(`_v/${path}`)
-const _import_views_three = (path, path1) => () => import(`_v/${path}/${path1}`)
 
 Vue.use(VueRouter)
 
@@ -100,6 +99,30 @@ export const routes = [{
         title: '积分商城'
       },
       component: _import_views('mall')
+    },
+    {
+      path: 'profile',
+      name: 'profile',
+      meta: {
+        title: '个人中心'
+      },
+      component: _import_views('profile')
+    },
+    {
+      path: 'myguanzhu',
+      name: 'myguanzhu',
+      meta: {
+        title: '我的关注'
+      },
+      component: _import_views('profile/myGuanzhu')
+    },
+    {
+      path: 'myfans',
+      name: 'myfans',
+      meta: {
+        title: '我的粉丝'
+      },
+      component: _import_views('profile/myFans')
     }
   ]
 }]
