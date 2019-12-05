@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import layout from '_v/layout'
 
 const _import_views = (path) => () => import(`_v/${path}`)
-const _import_views_three = (path, path1) => () => import(`_v/${path}/${path1}`)
 
 Vue.use(VueRouter)
 
@@ -18,6 +17,37 @@ export const routes = [{
         title: '网站首页'
       },
       component: _import_views('home')
+    },{
+      path: 'article',
+      name: 'art',
+      meta: {
+        title: '文章页'
+      },
+      component: _import_views('home/article')
+    },
+    {
+      path: 'videopage',
+      name: 'vid',
+      meta: {
+        title: '视频页'
+      },
+      component: _import_views('home/videopage')
+    },
+    {
+      path: 'more',
+      name: 'more',
+      meta: {
+        title: '更多'
+      },
+      component: _import_views('home/more')
+    },
+    {
+      path: 'contribute',
+      name: 'contr',
+      meta: {
+        title: '投稿'
+      },
+      component: _import_views('home/contribute')
     },
     {
       path: 'circle',
@@ -43,6 +73,8 @@ export const routes = [{
       },
       component: _import_views('circle/circleList')
     },
+
+    /* 圈子帖子列表与圈主端 */
     {
       path: 'circleforum',
       name: 'circleforum',
@@ -52,12 +84,35 @@ export const routes = [{
       component: _import_views('circle/circleforum')
     },
     {
+      path: 'newPosting',
+      name: 'newPosting',
+      meta: {
+        title: '发帖'
+      },
+      component: _import_views('circle/newPosting')
+    },
+    {
       path: 'game-center',
       name: 'game-center',
       meta: {
         title: '游戏中心'
       },
       component: _import_views('game-center')
+    },
+    {
+      path: 'game-detail/:id',
+      name: 'game-detail',
+      component: _import_views('game-center/modules/detail')
+    },
+    {
+      path: 'game-submit/:id',
+      name: 'game-submit',
+      component: _import_views('game-center/modules/submit')
+    },
+    {
+      path: 'game-review/:id',
+      name: 'game-review',
+      component: _import_views('game-center/modules/review')
     },
     {
       path: 'game-news',
@@ -92,12 +147,28 @@ export const routes = [{
       component: _import_views('mall')
     },
     {
-      path: 'personalcircle',
-      name: 'personalcircle',
+      path: 'profile',
+      name: 'profile',
       meta: {
-        title: '我创建的圈子'
+        title: '个人中心'
       },
-      component: _import_views('personalcircle')
+      component: _import_views('profile')
+    },
+    {
+      path: 'myguanzhu',
+      name: 'myguanzhu',
+      meta: {
+        title: '我的关注'
+      },
+      component: _import_views('profile/myGuanzhu')
+    },
+    {
+      path: 'myfans',
+      name: 'myfans',
+      meta: {
+        title: '我的粉丝'
+      },
+      component: _import_views('profile/myFans')
     }
   ]
 }]

@@ -1,14 +1,33 @@
 <template>
   <div style="width:100%">
     <!-- 上方搜索 -->
-    <div class="search"></div>
+    <div class="search">
+      <div style="width: 62px;
+      height: 42px;
+      letter-spacing: 2px;
+      color: rgba(56, 56, 56, 1);
+      font-size: 16px;
+      line-height: 260%;
+      text-align: center;
+      margin:5px;">全部</div>
+      <div style="width: 89px;
+      height: 42px;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 1);
+      background-color: rgba(3, 92, 193, 1);
+      font-size: 16px;
+      line-height: 260%;
+      text-align: center;
+      font-weight: bold;
+      margin:5px;"><icon-svg icon-class="Posting" style="width:22px;height:22px;position: relative;bottom:-2px;left:-3px"/>发帖</div>
+    </div>
 
     <!-- 下方 -->
     <div class="buttom">
       <!-- 左侧帖子 -->
       <div class="buttom-left">
         <!-- 评论卡片 -->
-        <div class="comment-card" :key="id" v-for="(comment,id) in comment.slice(0,2)">
+        <div class="comment-card">
           <div class="comment-card_room">
             <!-- 评论左侧个人信息 -->
             <div class="comment-card-left">
@@ -27,40 +46,38 @@
               <div class="comment-card-right">
                 <div class="comment-title">
                   <label>{{comment.title}}</label>
-                  <el-dropdown trigger="click">
-                    <span class="el-dropdown-link">
-                      <i class="el-icon-arrow-down el-icon--right"></i>
-                    </span>
-                    <el-dropdown-menu slot="dropdown">
-                      <el-dropdown-item>加推荐</el-dropdown-item>
-                      <el-dropdown-item divided>加精华</el-dropdown-item>
-                      <el-dropdown-item divided>删除</el-dropdown-item>
-                    </el-dropdown-menu>
-                  </el-dropdown>
                 </div>
-                <textarea class="comment-card-comment" disabled="true" v-model="comment.comment"></textarea>
-              </div>
-              <div class="comment-card-buttom-room">
-                <div
-                  class="comment-card-buttom"
-                  v-for="(item,index) in comment.chatu.slice(0,3)"
-                  :key="index"
-                >
-                  <img :src="item" class="comment-bottom" />
+                <div class="Information">
+                  <div class="label_room">
+                    <div class="labelll_title">标题：</div>
+                    <el-input
+                      type="text"
+                      placeholder="输入内容"
+                      v-model="newPosting.title"
+                      show-word-limit
+                      style="width:500px"
+                    ></el-input>
+                  </div>
+                  <div class="label_room">
+                    <div class="labelll_title">内容：</div>
+                    <el-input
+                      type="textarea"
+                      placeholder="请输入内容"
+                      v-model="newPosting.introduce"
+                      maxlength="500"
+                      :autosize="{ minRows: 2, maxRows: 4}"
+                      show-word-limit
+                      :rows="2"
+                      resize="none"
+                      style="width:500px;"
+                    ></el-input>
+                  </div>
+                  <div style="width:100%; padding-top: 20px;padding-left: 10%;display: flex;flex-direction: row;justify-content:space-between;align-items:center">
+                    <div class="addpic"><icon-svg icon-class="+" class-name="addpic_pic"/></div>
+                    <button class="btn_post">发布</button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <!-- 点赞和评论 -->
-          <div class="abulous">
-            <div style="margin-right:30px">
-              <icon-svg icon-class="good" />
-              <label style="margin-left:10px">{{comment.good}}</label>
-            </div>
-            <div>
-              <icon-svg icon-class="toke" />
-              <label style="margin-left:10px">{{comment.toke}}</label>
             </div>
           </div>
         </div>
@@ -93,20 +110,6 @@
           </div>
           <el-button type="primary" class="btn-up">关注</el-button>
         </div>
-
-        <!-- 右下圈子粉丝 -->
-        <div class="card-room2">
-          <label
-            style="color: rgba(3, 92, 193, 1);font-size: 18px;line-height: 150%;font-weight: bold;"
-          >圈子粉丝</label>
-
-          <div class="fans_room">
-            <div class="fans_card" :key="index" v-for="(item,index) in fans.slice(0,12)">
-              <img :src="item.pic" class="fans_pic" />
-              <div class="fans_name">{{item.name}}</div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -125,36 +128,20 @@ export default {
   data() {
     return {
       msg: "123",
-      comment: [
-        {
-          id: "1",
-          Userhead,
-          username: "风流倜傥宁采臣",
-          Grade: "50",
-          Post: "99",
-          integral: "500",
-          title: "九条命的爱情",
-          comment:
-            "狙击手作为现代战争环境下一种相对特殊的远程兵种，凭借着低调的风格，危险的气质，一击必杀的隐忍和深藏不露的作战方式，渐渐在各类游戏当中发展出了属于自己的科技树和生态链。一把杀敌于无形的狙击枪，既是区分抖音萌新和油管大佬的分水岭，也是一些“蹲逼”最终成长能否为“地藏”的试金石。狙击手作为现代战争环境下一种相对特殊的远程兵种，凭借着低调的风格，危险的气质，一击必杀的隐忍和深藏不露的作战方式，渐渐在各类游戏当中发展出了属于自己的科技树和生态链。一把杀敌于无形的狙击枪，既是区分抖音萌新和油管大佬的分水岭，也是一些“蹲逼”最终成长能否为“地藏”的试金石。",
-          chatu: [Carousel1, Carousel2, Carousel3, Carousel4],
-          good: "50",
-          toke: "60"
-        },
-        {
-          id: "2",
-          Userhead,
-          username: "宁采臣",
-          Grade: "40",
-          Post: "90",
-          integral: "5000",
-          title: "九爱情",
-          comment:
-            "狙击手作为现代战争环境下一种相对特殊的远程兵种，凭借着低调的风格，危险的气质，一击必杀的隐忍和深藏不露的作战方式，渐渐在各类游戏当中发展出了属于自己的科技树和生态链。一把杀敌于无形的狙击枪，既是区分抖音萌新和油管大佬的分水岭，也是一些“蹲逼”最终成长能否为“地藏”的试金石。狙击手作为现代战争环境下一种相对特殊的远程兵种，凭借着低调的风格，危险的气质，一击必杀的隐忍和深藏不露的作战方式，渐渐在各类游戏当中发展出了属于自己的科技树和生态链。一把杀敌于无形的狙击枪，既是区分抖音萌新和油管大佬的分水岭，也是一些“蹲逼”最终成长能否为“地藏”的试金石。",
-          chatu: [Carousel1, Carousel2, Carousel3, Carousel4],
-          good: "50",
-          toke: "60"
-        }
-      ],
+      comment: {
+        id: "1",
+        Userhead,
+        username: "风流倜傥宁采臣",
+        Grade: "50",
+        Post: "99",
+        integral: "500",
+        title: "九条命的爱情",
+        comment:
+          "狙击手作为现代战争环境下一种相对特殊的远程兵种，凭借着低调的风格，危险的气质，一击必杀的隐忍和深藏不露的作战方式，渐渐在各类游戏当中发展出了属于自己的科技树和生态链。一把杀敌于无形的狙击枪，既是区分抖音萌新和油管大佬的分水岭，也是一些“蹲逼”最终成长能否为“地藏”的试金石。狙击手作为现代战争环境下一种相对特殊的远程兵种，凭借着低调的风格，危险的气质，一击必杀的隐忍和深藏不露的作战方式，渐渐在各类游戏当中发展出了属于自己的科技树和生态链。一把杀敌于无形的狙击枪，既是区分抖音萌新和油管大佬的分水岭，也是一些“蹲逼”最终成长能否为“地藏”的试金石。",
+        chatu: [Carousel1, Carousel2, Carousel3, Carousel4],
+        good: "50",
+        toke: "60"
+      },
       card: {
         id: 1,
         title: "哇哈哈",
@@ -163,62 +150,56 @@ export default {
         dynamic: "990",
         introduction: "哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
       },
-      fans: [
-        {
-          name: "飞天小女警",
-          pic
-        },
-        {
-          name: "迪迦",
-          pic
-        },
-        {
-          name: "",
-          pic
-        },
-        {
-          name: "",
-          pic
-        },
-        {
-          name: "",
-          pic
-        },
-        {
-          name: "",
-          pic
-        },
-        {
-          name: "",
-          pic
-        },
-        {
-          name: "",
-          pic
-        },
-        {
-          name: "",
-          pic
-        },
-        {
-          name: "",
-          pic
-        },
-        {
-          name: "",
-          pic
-        },
-        {
-          name: "",
-          pic
-        }
-      ]
+      newPosting:{
+        title:"",
+        introduce:"",
+      }
     };
   }
 };
 </script>
 
 <style scoped>
+.addpic{
+  width: 70px;
+  height: 70px;
+  padding-top: 18px;
+  background-color: rgba(221, 221, 221, 1);
+	text-align: center;
+  
+}
+.addpic_pic{
+  width: 40px;
+  height: 40px;
+}
+.Information {
+  width: 100%;
+  padding: 4% 4% 3% 3%;
+}
+.label_room {
+  width: 100%;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.labelll_title {
+  width: 70px;
+  color: rgba(80, 80, 80, 1);
+  font-size: 14px;
+  line-height: 200%;
+}
+.btn_post {
+  width: 73px;
+  height: 43px;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(3, 92, 193, 1);
+  font-size: 14px;
+  line-height: 200%;
+  border-radius: 6px;
+  text-align: center;
+}
 .search {
   width: 100%;
   height: 54px;
@@ -228,37 +209,8 @@ export default {
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.11428571428571431);
   display: flex;
   flex-wrap: wrap;
-  padding: 15px 0;
 }
-.fans_room {
-  width: 100%;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.fans_card {
-  width: 67px;
-  height: 67px;
-  margin-bottom: 15px;
-  border: rgba(204, 204, 204, 1) solid 1px;
-}
-.fans_pic {
-  width: 100%;
-  height: 100%;
-}
-.fans_name {
-  width: 100%;
-  height: 22px;
-  position: relative;
-  bottom: 23px;
-  color: rgba(255, 255, 255, 1);
-  background-color: rgba(153, 153, 153, 0.4214285714285715);
-  font-size: 12px;
-  line-height: 150%;
-  text-align: center;
-}
+
 .all_right {
   width: 33%;
   margin-top: 2%;
@@ -321,7 +273,7 @@ export default {
   color: #1029b9;
 }
 .comment-title {
-  margin: 20px 0px 0px 20px;
+  margin: 0px 0px 0px 20px;
   padding-right: 20px;
   color: rgba(56, 56, 56, 1);
   font-size: 14px;
@@ -361,19 +313,6 @@ export default {
 .Userhead {
   width: 108px;
   height: 109px;
-}
-.comment-bottom {
-  width: 140px;
-  height: 100px;
-}
-.abulous {
-  width: 100%;
-  padding-right: 40px;
-  padding-top: 5px;
-  display: flex;
-  justify-content: flex-end;
-  border-top: rgba(204, 204, 204, 1) solid 1px;
-  line-height: 200%;
 }
 
 .btn-up {

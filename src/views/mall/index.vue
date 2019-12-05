@@ -1,6 +1,6 @@
 <template>
   <div class="mall">
-    <el-select v-model="value" placeholder="请选择" size="small">
+    <el-select v-model="value" placeholder="请选择" size="small" @change="showChange">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
     </el-select>
     <!-- 中间主区域 -->
@@ -25,6 +25,7 @@
       </div>
     </div>
     <img src="@/assets/mall/2179.png" class="tupian" />
+    <fashion></fashion>
   </div>
 </template>
 <script>
@@ -39,7 +40,7 @@ import {
   phone,
   mallHomeUpRight,
   fashion
-} from "./data";
+} from "./Modules/index/data";
 export default {
   components: {
     xiaoShou,
@@ -72,6 +73,11 @@ export default {
       ],
       value: "全部商品分类导航"
     };
+  },
+  methods:{
+    showChange(e){
+      console.log('11111',e)
+    }
   }
 };
 </script>
