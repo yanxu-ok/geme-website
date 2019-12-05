@@ -43,6 +43,8 @@ export const routes = [{
       },
       component: _import_views('circle/circleList')
     },
+
+    /* 圈子帖子列表与圈主端 */
     {
       path: 'circleforum',
       name: 'circleforum',
@@ -50,6 +52,14 @@ export const routes = [{
         title: '圈子'
       },
       component: _import_views('circle/circleforum')
+    },
+    {
+      path: 'newPosting',
+      name: 'newPosting',
+      meta: {
+        title: '发帖'
+      },
+      component: _import_views('circle/newPosting')
     },
     {
       path: 'game-center',

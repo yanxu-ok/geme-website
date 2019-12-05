@@ -99,7 +99,7 @@
           </div>
 
           <!-- 评论右侧 评论标题与内容 -->
-          <div class="comment-card-right-bottom">
+          <div class="comment-card-right-bottom" @click="forum()">
             <div class="comment-card-right">
               <label class="comment-title">{{comment.title}}</label>
               <textarea class="comment-card-comment" disabled="true" v-model="comment.comment"></textarea>
@@ -302,6 +302,9 @@ export default {
     },
     newcircle(){
       this.$router.push({path:'/newcircle'})
+    },
+    forum(){
+      this.$router.push({path:'/circleforum'})
     }
   }
 };
