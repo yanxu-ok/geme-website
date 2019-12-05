@@ -90,6 +90,14 @@ export const routes = [{
         title: '积分商城'
       },
       component: _import_views('mall')
+    },
+    {
+      path: 'personalcircle',
+      name: 'personalcircle',
+      meta: {
+        title: '我创建的圈子'
+      },
+      component: _import_views('personalcircle')
     }
   ]
 }]
