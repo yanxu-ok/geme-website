@@ -18,6 +18,37 @@ export const routes = [{
         title: '网站首页'
       },
       component: _import_views('home')
+    },{
+      path: 'article',
+      name: 'art',
+      meta: {
+        title: '文章页'
+      },
+      component: _import_views('home/article')
+    },
+    {
+      path: 'videopage',
+      name: 'vid',
+      meta: {
+        title: '视频页'
+      },
+      component: _import_views('home/videopage')
+    },
+    {
+      path: 'more',
+      name: 'more',
+      meta: {
+        title: '更多'
+      },
+      component: _import_views('home/more')
+    },
+    {
+      path: 'contribute',
+      name: 'contr',
+      meta: {
+        title: '投稿'
+      },
+      component: _import_views('home/contribute')
     },
     {
       path: 'circle',
