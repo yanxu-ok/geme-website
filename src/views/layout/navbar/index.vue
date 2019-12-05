@@ -49,27 +49,33 @@ export default {
 </script>
 <style lang="less" scoped>
   .navbar {
-    margin-top: 15px;
+    // margin-top: 15px;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.08);
     .nav-list {
-      background: #409eff;
+      width: 1000px;
+      margin: 0 auto;
+      // background: #409eff;
       display: flex;
       justify-content: space-between;
       .item {
         flex: auto;
         text-align: center;
-        line-height: 50px;
-        height: 50px;
+        line-height: 45px;
+        height: 45px;
         cursor: pointer;
         padding: 0 15px;
-        color: #fff;
+        color: rgba(56, 56, 56, 1);
         transition: background .5s;
         &:hover {
           background: rgba(3, 92, 193, 1);
           // font-weight: 600;
+          color: #fff;
         }
       }
       .router-link-active {
         background: rgba(3, 92, 193, 1);
+        color: #fff;
+        font-weight: 600;
       }
     }
   }

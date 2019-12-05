@@ -20,9 +20,9 @@ export default {
 </script>
 <style lang="less" scoped>
   .app-main {
-    width: 1200px;
-    margin: 0 auto;
     .container {
+      width: 1200px;
+      margin: 0 auto;
       min-height: calc(100vh - 175px - 135px);
       padding: 20px;
     }

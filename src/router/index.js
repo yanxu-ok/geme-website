@@ -6,172 +6,165 @@ const _import_views = (path) => () => import(`_v/${path}`)
 
 Vue.use(VueRouter)
 
-export const routes = [{
-  path: '/',
-  component: layout,
-  redirect: '/home',
-  children: [{
-      path: 'home',
-      name: 'home',
-      meta: {
-        title: '网站首页'
+export const routes = [
+  // 登录
+  {
+    path: '/login',
+    name: 'login'
+  },
+  // 注册
+  {
+    path: '/register',
+    name: 'register'
+  },
+  // 首页模块
+  {
+    path: '/',
+    component: layout,
+    redirect: '/home',
+    children: [
+      {
+        path: 'home',
+        name: 'home',
+        component: _import_views('home')
       },
-      component: _import_views('home')
-    },{
-      path: 'article',
-      name: 'art',
-      meta: {
-        title: '文章页'
+      {
+        path: 'article-list',
+        name: 'article-list'
       },
-      component: _import_views('home/article')
-    },
-    {
-      path: 'videopage',
-      name: 'vid',
-      meta: {
-        title: '视频页'
+      {
+        path: 'article/:id',
+        name: 'article'
       },
-      component: _import_views('home/videopage')
-    },
-    {
-      path: 'more',
-      name: 'more',
-      meta: {
-        title: '更多'
+      {
+        path: 'submit-article',
+        name: 'submit-article'
+      }
+    ]
+  },
+  // 圈子模块
+  {
+    path: '/circle',
+    component: layout,
+    redirect: '/circle/index',
+    children: [
+      // 圈子首页
+      {
+        path: 'index',
+        name: 'circle-index',
+        component: _import_views('circle')
       },
-      component: _import_views('home/more')
-    },
-    {
-      path: 'contribute',
-      name: 'contr',
-      meta: {
-        title: '投稿'
+      // 圈子列表页
+      {
+        path: 'circle-list',
+        name: 'circle-list',
+        component: _import_views('circle/circleList')
       },
-      component: _import_views('home/contribute')
-    },
-    {
-      path: 'circle',
-      name: 'circle',
-      meta: {
-        title: '圈子首页'
+      // 圈子详情(帖子列表)
+      {
+        path: 'circle-detail/:id',
+        name: 'circle-detail',
+        component: _import_views('circle/circleforum')
       },
-      component: _import_views('circle')
-    },
-    {
-      path: 'newcircle',
-      name: 'newcircle',
-      meta: {
-        title: '创建圈子'
+      // 创建圈子
+      {
+        path: 'circle-create',
+        name: 'circle-create',
+        component: _import_views('circle/newcircle')
       },
-      component: _import_views('circle/newcircle')
-    },
-    {
-      path: 'circleList',
-      name: 'circleList',
-      meta: {
-        title: '圈子列表'
+      // 发布帖子
+      {
+        path: 'post-create',
+        name: 'post-create',
       },
-      component: _import_views('circle/circleList')
-    },
-
-    /* 圈子帖子列表与圈主端 */
-    {
-      path: 'circleforum',
-      name: 'circleforum',
-      meta: {
-        title: '圈子'
+      // 帖子详情
+      {
+        path: 'post-detail/:id',
+        name: 'post-detail'
       },
-      component: _import_views('circle/circleforum')
-    },
-    {
-      path: 'newPosting',
-      name: 'newPosting',
-      meta: {
-        title: '发帖'
+      // 热门动态
+      {
+        path: 'hot-posts',
+        name: 'hot-posts',
+      }
+    ]
+  },
+  // 游戏中心模块
+  {
+    path: '/game-center',
+    component: layout,
+    redirect: '/game-center/index',
+    children: [
+      // 游戏中心首页
+      {
+        path: 'index',
+        name: 'game-center',
+        component: _import_views('game-center')
       },
-      component: _import_views('circle/newPosting')
-    },
-    {
-      path: 'game-center',
-      name: 'game-center',
-      meta: {
-        title: '游戏中心'
+      // 游戏中心-游戏内容页
+      {
+        path: 'detail/:id',
+        name: 'game-detail'
+      }
+    ]
+  },
+  // 游戏资讯
+  {
+    path: '/game-news',
+    component: layout,
+    redirect: '/game-news/index',
+    children: [
+      {
+        path: 'index',
+        name: 'game-news',
+        component: _import_views('game-news')
+      }
+    ]
+  },
+  // 游戏技巧
+  {
+    path: '/game-skill',
+    redirect: '/game-skill/index',
+    component: layout,
+    children: [
+      {
+        path: 'index',
+        name: 'game-skill',
+        component: _import_views('game-skill')
+      }
+    ]
+  },
+  // 网友点评
+  {
+    path: '/comment',
+    component: layout,
+    redirect: '/comment/index',
+    children: [
+      {
+        path: 'index',
+        name: 'comment',
+        component: _import_views('comment')
+      }
+    ]
+  },
+  // 积分商城
+  {
+    path: '/mall',
+    component: layout,
+    redirect: '/mall/index',
+    children: [
+      {
+        path: 'index',
+        name: 'mall',
+        component: _import_views('mall')
       },
-      component: _import_views('game-center')
-    },
-    {
-      path: 'game-detail/:id',
-      name: 'game-detail',
-      component: _import_views('game-center/modules/detail')
-    },
-    {
-      path: 'game-submit/:id',
-      name: 'game-submit',
-      component: _import_views('game-center/modules/submit')
-    },
-    {
-      path: 'game-review/:id',
-      name: 'game-review',
-      component: _import_views('game-center/modules/review')
-    },
-    {
-      path: 'game-news',
-      name: 'game-news',
-      meta: {
-        title: '游戏资讯'
-      },
-      component: _import_views('game-news')
-    },
-    {
-      path: 'game-skill',
-      name: 'game-skill',
-      meta: {
-        title: '游戏技巧'
-      },
-      component: _import_views('game-skill')
-    },
-    {
-      path: 'comment',
-      name: 'comment',
-      meta: {
-        title: '网友点评'
-      },
-      component: _import_views('comment')
-    },
-    {
-      path: 'mall',
-      name: 'mall',
-      meta: {
-        title: '积分商城'
-      },
-      component: _import_views('mall')
-    },
-    {
-      path: 'profile',
-      name: 'profile',
-      meta: {
-        title: '个人中心'
-      },
-      component: _import_views('profile')
-    },
-    {
-      path: 'myguanzhu',
-      name: 'myguanzhu',
-      meta: {
-        title: '我的关注'
-      },
-      component: _import_views('profile/myGuanzhu')
-    },
-    {
-      path: 'myfans',
-      name: 'myfans',
-      meta: {
-        title: '我的粉丝'
-      },
-      component: _import_views('profile/myFans')
-    }
-  ]
-}]
+      {
+        path: 'good-detail/:id',
+        name: 'good-detail',
+      }
+    ]
+  }
+]
 
 const router = new VueRouter({
   routes
